@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1kv01nehjtg4"]
+
+[ext_resource type="PackedScene" uid="uid://dbggp5gsy2yl2" path="res://Cube.glb" id="1_bibtl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gsmao"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v5cg6"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Cube" parent="." instance=ExtResource("1_bibtl")]
+transform = Transform3D(8.1, 0, 0, 0, 1, 0, 0, 0, 5.9, 0, 0, 0)
+
+[node name="Cube2" parent="." instance=ExtResource("1_bibtl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 1)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_gsmao")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_v5cg6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 10)
