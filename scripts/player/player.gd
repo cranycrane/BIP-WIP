@@ -25,14 +25,15 @@ func _physics_process(delta):
 		direction = Vector3.ZERO  # Resetujeme směr na začátku každého cyklu
 
 	# Zpracování vstupu pro pohyb
-	if Input.is_action_pressed("ui_right"):
-		direction.x += 1
-	if Input.is_action_pressed("ui_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		direction.z += 1
-	if Input.is_action_pressed("ui_up"):
-		direction.z -= 1
+	if not is_staggered:
+		if Input.is_action_pressed("ui_right"):
+			direction.x += 1
+		if Input.is_action_pressed("ui_left"):
+			direction.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			direction.z += 1
+		if Input.is_action_pressed("ui_up"):
+			direction.z -= 1
 	
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()  # Normalizace pro konzistentní rychlost
