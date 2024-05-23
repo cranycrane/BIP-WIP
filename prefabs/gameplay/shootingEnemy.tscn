@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://djiycmbjjnmqw"]
+
+[ext_resource type="Script" path="res://scripts/npc/shootingEnemy.gd" id="1_vnkjb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_43t56"]
+
+[node name="ShootingEnemy" type="CharacterBody3D"]
+script = ExtResource("1_vnkjb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_43t56")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.15
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ProjectileSpawn" type="Marker3D" parent="."]
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
