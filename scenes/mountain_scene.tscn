@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://boyhdxs14agwg"]
+
+[ext_resource type="PackedScene" uid="uid://rwkyqwd3q37b" path="res://geometry/world/Mountain0.95.glb" id="1_l3rfu"]
+
+[node name="MountainScene" type="Node3D"]
+
+[node name="Mountain0_95" parent="." instance=ExtResource("1_l3rfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0574, 0, -4.09508)
