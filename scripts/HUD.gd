@@ -5,22 +5,9 @@ var lives: int = 3  # Starting number of lives
 @export var max_lives: int = 5  # Maximum number of lives the player can have
 
 @onready var heart_container = $HeartContainer
+@onready var coin_container = $CoinContainer
 @onready var death_screen = $DeathScreen
 @onready var restart_button = $DeathScreen/RestartButton
-
-func _ready():
-	set_score(0)
-
-func set_score(value):
-	score = value
-	update_score_display()
-
-func add_score(amount = 1):
-	score += amount
-	update_score_display()
-
-func update_score_display():
-	get_node("Display/SCORE").text = "SCORE: " + str(score)
 
 func update_lives_display(current_lives):
 	if current_lives <= 0:
@@ -41,13 +28,29 @@ func update_lives_display(current_lives):
 func _on_player_player_hit(current_lives):
 	update_lives_display(current_lives)
 
+func update_scores_display():		
+	# Clear all coin
+	for coin in coin_container.get_children():
+		coin.queue_free()
+	
+	# Add coin icons based on the current score
+	for i in range(score):
+		var coin = TextureRect.new()
+		coin.expand_mode = TextureRect.EXPAND_FIT_WIDTH
+		coin.texture = preload("res://art/coin.png")
+		coin_container.add_child(coin)
+
 # Death behaviour
 func show_death_screen():
 	death_screen.show()
 	get_tree().paused = true
 
 func _on_restart_button_pressed():
-	print("AHOJ")
 	get_tree().paused = false
 	var current_scene = get_tree().current_scene
 	get_tree().reload_current_scene()
+
+
+func _on_coin_coin_collected():
+	score += 1
+	update_scores_display()

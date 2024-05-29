@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn05oc16bv8kd"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/platforming/moving_block.gd" id="1_hbjn5"]
+[ext_resource type="PackedScene" uid="uid://bha1v1wathbj6" path="res://objects/Block_2.4.glb" id="2_e2sjx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kjtl0"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_hbjn5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kjtl0")
+
+[node name="Block_2_4" parent="." instance=ExtResource("2_e2sjx")]
+
+[node name="MoveTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

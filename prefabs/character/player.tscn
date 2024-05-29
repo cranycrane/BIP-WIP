@@ -4,8 +4,12 @@
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_4kmnv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7iyax"]
+radius = 0.25
+height = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_j3m3y"]
+radius = 0.25
+height = 1.0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_wqdnm")
@@ -24,5 +28,5 @@ script = ExtResource("2_4kmnv")
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1, 1)
-fov = 65.0
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, -1, -1)
+fov = 25.5

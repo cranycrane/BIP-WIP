@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://vatto345e7s0"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/platforming/pushable_block.gd" id="1_ekfua"]
+[ext_resource type="PackedScene" uid="uid://bha1v1wathbj6" path="res://objects/Block_2.4.glb" id="2_x45xd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kjtl0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k51p5"]
+size = Vector3(1.39885, 1.09521, 1.54626)
+
+[node name="PushableBlock" type="CharacterBody3D"]
+script = ExtResource("1_ekfua")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kjtl0")
+
+[node name="Block_2_4" parent="." instance=ExtResource("2_x45xd")]
+
+[node name="MoveTimer" type="Timer" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0069046, 0.0476074, 0.0490112)
+shape = SubResource("BoxShape3D_k51p5")
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

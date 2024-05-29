@@ -1,12 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://c1kv01nehjtg4"]
+[gd_scene load_steps=22 format=3 uid="uid://c1kv01nehjtg4"]
 
 [ext_resource type="PackedScene" uid="uid://bnnh20ail45mt" path="res://prefabs/character/player.tscn" id="1_a4kte"]
 [ext_resource type="Script" path="res://scripts/gameplay/world.gd" id="1_a563s"]
 [ext_resource type="PackedScene" uid="uid://djuaoq7blvrls" path="res://prefabs/collectables/coin.tscn" id="2_76xuq"]
-[ext_resource type="PackedScene" uid="uid://2270o26k73ud" path="res://geometry/playground/playground1.glb" id="2_tc3ca"]
 [ext_resource type="Script" path="res://scripts/gameplay/coin.gd" id="3_uq5r8"]
-[ext_resource type="PackedScene" uid="uid://coipfwg6swqia" path="res://scenes/playground_11111.tscn" id="4_sonak"]
-[ext_resource type="PackedScene" uid="uid://crjpbu6baured" path="res://scenes/playground_1.tscn" id="5_njkne"]
 [ext_resource type="PackedScene" uid="uid://siaojteegwfd" path="res://prefabs/gameplay/enemy.tscn" id="7_kp4ib"]
 [ext_resource type="AudioStream" uid="uid://10xghcbmisei" path="res://audio/collected_coin.mp3" id="7_unxrq"]
 [ext_resource type="PackedScene" uid="uid://dddumvkrdw6eh" path="res://objects/MagicCoin1.0.S.glb" id="8_2rs14"]
@@ -14,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bcgx7pq0b3mj5" path="res://prefabs/gameplay/npc.tscn" id="12_hvcg7"]
 [ext_resource type="PackedScene" uid="uid://djiycmbjjnmqw" path="res://prefabs/gameplay/shootingEnemy.tscn" id="12_o3a7f"]
 [ext_resource type="PackedScene" uid="uid://cfq0aps387o0v" path="res://prefabs/gameplay/projectile.tscn" id="13_x53tx"]
+[ext_resource type="PackedScene" uid="uid://c866pdji0vdsm" path="res://prefabs/gameplay/sensors/pressure_plate.tscn" id="15_escu1"]
+[ext_resource type="PackedScene" uid="uid://vatto345e7s0" path="res://prefabs/gameplay/platforming/pushable_block.tscn" id="16_ne154"]
+[ext_resource type="PackedScene" uid="uid://bn05oc16bv8kd" path="res://prefabs/gameplay/platforming/moving_block.tscn" id="16_r1ouv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kxnp8"]
 
@@ -35,16 +35,6 @@ size = Vector3(5, 0.2, 5)
 [sub_resource type="BoxMesh" id="BoxMesh_flhtq"]
 size = Vector3(5, 0.2, 5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jfget"]
-size = Vector3(7, 1, 10.9058)
-
-[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_epe3s"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xj3nq"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_e60e4"]
-size = Vector3(1.37903, 1, 1)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_yvvaa"]
 radius = 0.138212
 
@@ -52,7 +42,7 @@ radius = 0.138212
 script = ExtResource("1_a563s")
 
 [node name="Player" parent="." instance=ExtResource("1_a4kte")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4.02795, -2.39319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05404, 2.38031, -2.39319)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oaslu")
@@ -74,108 +64,52 @@ shape = SubResource("BoxShape3D_wia5q")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
 mesh = SubResource("BoxMesh_flhtq")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(0.883627, 0.468192, 0, -0.468192, 0.883627, 0, 0, 0, 1, -6.95374, 1.41835, 0.855715)
+[node name="StaticBody3D3" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(4, 1.7917e-10, 0, 2.35559e-10, 4, 0, 0, 0, 4, -0.0449816, -0.0220609, 18.5049)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D3"]
 shape = SubResource("BoxShape3D_wia5q")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D3"]
 mesh = SubResource("BoxMesh_flhtq")
 
-[node name="playground1" parent="NavigationRegion3D" instance=ExtResource("2_tc3ca")]
-transform = Transform3D(5.38118e-05, 0.0159771, -2.89496, 0.00901385, 2.89494, 0.0159772, 2.89499, -0.00901401, 4.0601e-06, -6.97086, 1.01429, -29.9878)
+[node name="Coin2" parent="." instance=ExtResource("2_76xuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32029, 2.36972, -4.02423)
+script = ExtResource("3_uq5r8")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D/playground1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+[node name="MagicCoin1_0_S" parent="Coin2" instance=ExtResource("8_2rs14")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69085, -0.0145367, -10.9569)
-shape = SubResource("BoxShape3D_jfget")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin2"]
+shape = SubResource("SphereShape3D_yvvaa")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-mesh = SubResource("PlaceholderMesh_epe3s")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51544, 0.753927, -8.51396)
-shape = SubResource("CylinderShape3D_xj3nq")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09634, 0.753927, -10.3846)
-shape = SubResource("CylinderShape3D_xj3nq")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.54521, 0.753927, -8.94962)
-shape = SubResource("CylinderShape3D_xj3nq")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0112, 0.753927, -12.4915)
-shape = SubResource("CylinderShape3D_xj3nq")
-
-[node name="Basic" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(2.92769, 0.111157, 0, -1.41404, 0.230145, 0, 0, 0, 1, 1.52183, 0.825912, -7.04176)
-shape = SubResource("BoxShape3D_e60e4")
-
-[node name="Basic5" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(-1.27952e-07, -4.86235e-09, -1, -1.41506, 0.230106, 0, 2.92719, 0.111238, -4.37114e-08, 0.894329, 1.298, -13.5874)
-shape = SubResource("BoxShape3D_e60e4")
-
-[node name="Basic3" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(-1.27952e-07, -4.86235e-09, -1, -1.41506, 0.230106, 0, 2.92719, 0.111238, -4.37114e-08, -1.1057, 1.75455, -8.22984)
-shape = SubResource("BoxShape3D_e60e4")
-
-[node name="Basic2" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(3.14312, 0, 0, 0, 0.144287, 0, 0, 0, 1, -0.292486, 1.40183, -7.00791)
-shape = SubResource("BoxShape3D_e60e4")
-
-[node name="Basic4" type="CollisionShape3D" parent="NavigationRegion3D/playground1/StaticBody3D2"]
-transform = Transform3D(3.14312, 0, 0, 0, 0.144287, 0, 0, 0, 1, 0.135622, 2.53477, -10.0484)
-shape = SubResource("BoxShape3D_e60e4")
-
-[node name="playground2" parent="NavigationRegion3D" instance=ExtResource("4_sonak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
-
-[node name="playground3" parent="NavigationRegion3D" instance=ExtResource("5_njkne")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.28, 0, 0)
+[node name="CoinSound" type="AudioStreamPlayer3D" parent="Coin2"]
+stream = ExtResource("7_unxrq")
 
 [node name="Coin" parent="." instance=ExtResource("2_76xuq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.43666, 3.68486, -15.8467)
 script = ExtResource("3_uq5r8")
 
 [node name="MagicCoin1_0_S" parent="Coin" instance=ExtResource("8_2rs14")]
-transform = Transform3D(4.955, 0, 0, 0, 4.955, 0, 0, 0, 4.955, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 20.8153)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
 transform = Transform3D(4.955, 0, 0, 0, 4.955, 0, 0, 0, 4.955, 0, 0, 0)
 shape = SubResource("SphereShape3D_yvvaa")
 
 [node name="CoinSound" type="AudioStreamPlayer3D" parent="Coin"]
-stream = ExtResource("7_unxrq")
-
-[node name="Coin2" parent="." instance=ExtResource("2_76xuq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.63563, 3.62669, -23.9548)
-script = ExtResource("3_uq5r8")
-
-[node name="MagicCoin1_0_S" parent="Coin2" instance=ExtResource("8_2rs14")]
-transform = Transform3D(4.955, 0, 0, 0, 4.955, 0, 0, 0, 4.955, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin2"]
-transform = Transform3D(4.955, 0, 0, 0, 4.955, 0, 0, 0, 4.955, 0, 0, 0)
-shape = SubResource("SphereShape3D_yvvaa")
-
-[node name="CoinSound" type="AudioStreamPlayer3D" parent="Coin2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0723, 0.0581701, 8.1081)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.8153)
 stream = ExtResource("7_unxrq")
 
 [node name="HUD" parent="." instance=ExtResource("10_32m7w")]
 
 [node name="Enemy" parent="." instance=ExtResource("7_kp4ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08665, 3.59292, -38.4078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79472, 1.36003, -7.09244)
 player_path = NodePath("../Player")
+follow_distance = 20.0
 
 [node name="ShootingEnemy" parent="." instance=ExtResource("12_o3a7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.703308, 3.98993, -27.6643)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51103, 1.99317, -6.84904)
 player_path = NodePath("../Player")
 projectile_scene = ExtResource("13_x53tx")
 
@@ -199,7 +133,22 @@ player = NodePath("../Player")
 
 [node name="Projectile" parent="." instance=ExtResource("13_x53tx")]
 
+[node name="PressurePlate" parent="." instance=ExtResource("15_escu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.321396, 0.412443, -6.12274)
+direction = 3
+
+[node name="PushableBlock" parent="." instance=ExtResource("16_ne154")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61699, 1.05853, -6.59029)
+
+[node name="MovingBlock" parent="." instance=ExtResource("16_r1ouv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42735, 1.35471, -9.24048)
+signal_emitter_path = NodePath("../PressurePlate")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("16_ne154")]
+
 [connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
 [connection signal="player_hit" from="Player" to="HUD" method="_on_player_player_hit"]
-[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
 [connection signal="body_entered" from="Coin2" to="Coin2" method="_on_body_entered"]
+[connection signal="coin_collected" from="Coin2" to="HUD" method="_on_coin_coin_collected"]
+[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
+[connection signal="coin_collected" from="Coin" to="HUD" method="_on_coin_coin_collected"]

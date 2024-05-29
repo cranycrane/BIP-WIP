@@ -3,8 +3,12 @@
 [ext_resource type="Script" path="res://scripts/npc/npc.gd" id="1_a28ik"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tydvk"]
+radius = 0.25
+height = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q813c"]
+height = 1.0
+radius = 0.25
 
 [node name="NPC" type="Node3D"]
 script = ExtResource("1_a28ik")
@@ -19,9 +23,9 @@ transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0.0130005, 0, 0)
 shape = SubResource("CylinderShape3D_q813c")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84788, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889292, 0)
 text = "Hello world!"
-font_size = 80
+font_size = 40
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
