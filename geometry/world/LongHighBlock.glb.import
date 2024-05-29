@@ -3,7 +3,11 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
+<<<<<<< HEAD
 uid="uid://d2v5hpmidfsa5"
+=======
+uid="uid://0icsbiw12xkh"
+>>>>>>> 75569b6f0dadcf75ecd8280d64f07249b8b79774
 path="res://.godot/imported/LongHighBlock.glb-fc3ab15bca629b6174d0535b42bfd80e.scn"
 
 [deps]
