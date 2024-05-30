@@ -3,11 +3,12 @@ extends Node2D
 var score: int = 0
 var lives: int = 3  # Starting number of lives
 @export var max_lives: int = 5  # Maximum number of lives the player can have
+@export var num_of_coins = 5
 
 @onready var heart_container = $HeartContainer
 @onready var coin_container = $CoinContainer
 @onready var death_screen = $DeathScreen
-@onready var restart_button = $DeathScreen/RestartButton
+@onready var completed_screen = $CompletedScreen
 
 func update_lives_display(current_lives):
 	if current_lives <= 0:
@@ -40,7 +41,6 @@ func update_scores_display():
 		coin.texture = preload("res://art/coin.png")
 		coin_container.add_child(coin)
 
-# Death behaviour
 func show_death_screen():
 	death_screen.show()
 	get_tree().paused = true
@@ -50,7 +50,17 @@ func _on_restart_button_pressed():
 	var current_scene = get_tree().current_scene
 	get_tree().reload_current_scene()
 
-
 func _on_coin_coin_collected():
 	score += 1
+	if score == num_of_coins:
+		show_completed_screen()
+		return
+		
 	update_scores_display()
+
+func show_completed_screen():
+	completed_screen.show()
+	get_tree().paused = true
+
+func _on_exit_button_pressed():
+	get_tree().quit()

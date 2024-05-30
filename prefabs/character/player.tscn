@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnnh20ail45mt"]
+[gd_scene load_steps=6 format=3 uid="uid://bnnh20ail45mt"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wqdnm"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_4kmnv"]
+[ext_resource type="PackedScene" uid="uid://kov15c4ffwwj" path="res://objects/Lizard_HighP_3.1.glb" id="2_uuabj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7iyax"]
 radius = 0.25
@@ -16,6 +17,8 @@ script = ExtResource("1_wqdnm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_7iyax")
+
+[node name="Lizard_HighP_3_1" parent="." instance=ExtResource("2_uuabj")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_j3m3y")

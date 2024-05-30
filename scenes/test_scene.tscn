@@ -1,12 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1kv01nehjtg4"]
+[gd_scene load_steps=18 format=3 uid="uid://c1kv01nehjtg4"]
 
 [ext_resource type="PackedScene" uid="uid://bnnh20ail45mt" path="res://prefabs/character/player.tscn" id="1_a4kte"]
 [ext_resource type="Script" path="res://scripts/gameplay/world.gd" id="1_a563s"]
 [ext_resource type="PackedScene" uid="uid://djuaoq7blvrls" path="res://prefabs/collectables/coin.tscn" id="2_76xuq"]
-[ext_resource type="Script" path="res://scripts/gameplay/coin.gd" id="3_uq5r8"]
 [ext_resource type="PackedScene" uid="uid://siaojteegwfd" path="res://prefabs/gameplay/enemy.tscn" id="7_kp4ib"]
-[ext_resource type="AudioStream" uid="uid://10xghcbmisei" path="res://audio/collected_coin.mp3" id="7_unxrq"]
-[ext_resource type="PackedScene" uid="uid://dddumvkrdw6eh" path="res://objects/MagicCoin1.0.S.glb" id="8_2rs14"]
 [ext_resource type="PackedScene" uid="uid://dkbtgrdu35uav" path="res://prefabs/gameplay/hud.tscn" id="10_32m7w"]
 [ext_resource type="PackedScene" uid="uid://bcgx7pq0b3mj5" path="res://prefabs/gameplay/npc.tscn" id="12_hvcg7"]
 [ext_resource type="PackedScene" uid="uid://djiycmbjjnmqw" path="res://prefabs/gameplay/shootingEnemy.tscn" id="12_o3a7f"]
@@ -34,9 +31,6 @@ size = Vector3(5, 0.2, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_flhtq"]
 size = Vector3(5, 0.2, 5)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_yvvaa"]
-radius = 0.138212
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_a563s")
@@ -73,53 +67,33 @@ shape = SubResource("BoxShape3D_wia5q")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D3"]
 mesh = SubResource("BoxMesh_flhtq")
 
-[node name="Coin2" parent="." instance=ExtResource("2_76xuq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32029, 2.36972, -4.02423)
-script = ExtResource("3_uq5r8")
-
-[node name="MagicCoin1_0_S" parent="Coin2" instance=ExtResource("8_2rs14")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin2"]
-shape = SubResource("SphereShape3D_yvvaa")
-
-[node name="CoinSound" type="AudioStreamPlayer3D" parent="Coin2"]
-stream = ExtResource("7_unxrq")
-
 [node name="Coin" parent="." instance=ExtResource("2_76xuq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.43666, 3.68486, -15.8467)
-script = ExtResource("3_uq5r8")
+transform = Transform3D(2.505, 0, 0, 0, 2.505, 0, 0, 0, 2.505, 4, 2, -2.42387)
 
-[node name="MagicCoin1_0_S" parent="Coin" instance=ExtResource("8_2rs14")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 20.8153)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
-transform = Transform3D(4.955, 0, 0, 0, 4.955, 0, 0, 0, 4.955, 0, 0, 0)
-shape = SubResource("SphereShape3D_yvvaa")
-
-[node name="CoinSound" type="AudioStreamPlayer3D" parent="Coin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.8153)
-stream = ExtResource("7_unxrq")
+[node name="Coin2" parent="." instance=ExtResource("2_76xuq")]
+transform = Transform3D(2.505, 0, 0, 0, 2.505, 0, 0, 0, 2.505, 6.91907, 2, -2.42387)
 
 [node name="HUD" parent="." instance=ExtResource("10_32m7w")]
+num_of_coins = 2
 
 [node name="Enemy" parent="." instance=ExtResource("7_kp4ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79472, 1.36003, -7.09244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79472, 1.36003, -33.1467)
 player_path = NodePath("../Player")
 follow_distance = 20.0
 
 [node name="ShootingEnemy" parent="." instance=ExtResource("12_o3a7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51103, 1.99317, -6.84904)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51103, 1.99317, -22.2755)
 player_path = NodePath("../Player")
 projectile_scene = ExtResource("13_x53tx")
 
-[node name="Control" type="Control" parent="."]
+[node name="HitScreen" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HitRect" type="ColorRect" parent="Control"]
+[node name="HitRect" type="ColorRect" parent="HitScreen"]
 layout_mode = 0
 offset_left = -115.0
 offset_top = -76.0
@@ -145,10 +119,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42735, 1.35471, -9.24048)
 signal_emitter_path = NodePath("../PressurePlate")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("16_ne154")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23391, 0)
 
 [connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
 [connection signal="player_hit" from="Player" to="HUD" method="_on_player_player_hit"]
-[connection signal="body_entered" from="Coin2" to="Coin2" method="_on_body_entered"]
-[connection signal="coin_collected" from="Coin2" to="HUD" method="_on_coin_coin_collected"]
-[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
 [connection signal="coin_collected" from="Coin" to="HUD" method="_on_coin_coin_collected"]
+[connection signal="coin_collected" from="Coin2" to="HUD" method="_on_coin_coin_collected"]

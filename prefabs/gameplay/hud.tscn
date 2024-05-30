@@ -82,4 +82,46 @@ offset_right = 683.0
 offset_bottom = 337.0
 text = "RESTART LEVEL"
 
+[node name="CompletedScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CompletedScreen"]
+offset_left = -84.0
+offset_top = -24.0
+offset_right = 1144.0
+offset_bottom = 667.0
+color = Color(0.156863, 0.156863, 0.156863, 0.501961)
+
+[node name="DeathLabel" type="Label" parent="CompletedScreen"]
+offset_left = 337.0
+offset_top = 192.0
+offset_right = 769.0
+offset_bottom = 259.0
+text = "LEVEL COMPLETED"
+label_settings = SubResource("LabelSettings_mlxtu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="CompletedScreen"]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 287.0
+offset_right = 616.0
+offset_bottom = 346.0
+text = "EXIT GAME"
+
+[node name="RestartButton" type="Button" parent="CompletedScreen"]
+process_mode = 3
+offset_left = 468.0
+offset_top = 362.0
+offset_right = 641.0
+offset_bottom = 426.0
+text = "RESTART LEVEL"
+
 [connection signal="pressed" from="DeathScreen/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CompletedScreen/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CompletedScreen/RestartButton" to="." method="_on_restart_button_pressed"]
