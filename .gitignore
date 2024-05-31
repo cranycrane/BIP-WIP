@@ -18,3 +18,4 @@ mono_crash.*.json
 *.tmp
 *.import
 *.godot
+*.glb.import
