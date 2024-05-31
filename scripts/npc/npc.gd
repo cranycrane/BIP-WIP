@@ -2,12 +2,14 @@
 extends Node3D
 
 @export var player: NodePath
+@export var message = "Hello world"
 
 var player_node: Node3D
 
 func _ready():
 	player_node = get_node(player)
 	$Label3D.visible = false
+	$Label3D.text = message
 	
 func _process(delta):
 	if $Label3D.visible:

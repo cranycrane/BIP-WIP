@@ -9,6 +9,7 @@ const RESET_DELAY = 0.5
 @export var fall_acceleration = 25
 @export var max_lives = 3
 @onready var current_lives: int = max_lives
+@onready var lizard_model = $Lizard
 
 
 var target_velocity = Vector3.ZERO
@@ -47,6 +48,7 @@ func _physics_process(delta):
 	
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
+		lizard_model.look_at(lizard_model.global_transform.origin + direction, Vector3.UP)
 
 	target_velocity.x = direction.x * max_speed
 	target_velocity.z = direction.z * max_speed
@@ -81,3 +83,7 @@ func hit(dir):
 	await get_tree().create_timer(RESET_DELAY).timeout
 	is_staggered = false
 	direction = Vector3.ZERO
+
+
+func _on_player_hit(current_lives):
+	pass # Replace with function body.

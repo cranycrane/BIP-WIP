@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c10q6utmqmbrk"]
+
+[node name="HitScreen" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HitRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -115.0
+offset_top = -76.0
+offset_right = 1274.0
+offset_bottom = 783.0
+color = Color(0.658824, 0, 0.0705882, 0.184314)

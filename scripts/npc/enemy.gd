@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
-const SPEED = 4.0
-const ATTACK_RANGE = 1.5
+const ATTACK_RANGE = 1
 
+@export var speed = 4.0
 @export var player_path : NodePath
 
 @export var follow_distance: float = 12.0
@@ -56,7 +56,7 @@ func move_along_path(delta: float):
 	# Navigation
 	# nav_agent.set_target_position(player.global_transform.origin)
 	var next_nav_point = nav_agent.get_next_path_position()
-	velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
+	velocity = (next_nav_point - global_transform.origin).normalized() * speed
 	
 func _hit_finished():
 	if hit_timer.is_stopped():

@@ -90,6 +90,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="CompletedScreen"]
+layout_mode = 0
 offset_left = -84.0
 offset_top = -24.0
 offset_right = 1144.0
@@ -97,6 +98,7 @@ offset_bottom = 667.0
 color = Color(0.156863, 0.156863, 0.156863, 0.501961)
 
 [node name="DeathLabel" type="Label" parent="CompletedScreen"]
+layout_mode = 0
 offset_left = 337.0
 offset_top = 192.0
 offset_right = 769.0
@@ -116,6 +118,7 @@ text = "EXIT GAME"
 
 [node name="RestartButton" type="Button" parent="CompletedScreen"]
 process_mode = 3
+layout_mode = 0
 offset_left = 468.0
 offset_top = 362.0
 offset_right = 641.0
