@@ -21,6 +21,11 @@ shapes/nvidia_disable_threaded_optimization=true
 shapes/overrides/force_vertex_shading.mobile=true
 shapes/overrides/force_lambert_over_burley.mobile=true
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [rendering]
 
 mesh_lod/lod_change/threshold_pixels=0.0

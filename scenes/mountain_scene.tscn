@@ -36,7 +36,7 @@ navigation_mesh = SubResource("NavigationMesh_ili7a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9631, 0, -2.51111)
 
 [node name="Player" parent="." instance=ExtResource("2_5pt15")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.27288, 0.532527, 4.40733)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.27288, 0.0712194, 4.40733)
 jump_speed = 6
 
 [node name="HitScreen" parent="." instance=ExtResource("4_qehhh")]

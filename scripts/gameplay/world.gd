@@ -4,6 +4,9 @@ extends Node3D
 
 func _ready():
 	hit_screen.visible = false
+	
+func _process(double):
+	print("FPS %d" % Engine.get_frames_per_second())
 
 func _on_player_player_hit(current_lives):
 	hit_screen.visible = true

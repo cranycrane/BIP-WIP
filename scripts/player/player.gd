@@ -59,12 +59,13 @@ func _physics_process(delta):
 
 	if direction != Vector3.ZERO or not is_on_floor():
 		velocity = target_velocity
-	else:
+		
+	if direction == Vector3.ZERO:
 		velocity.x = 0
 		velocity.z = 0  # stop the movement
 
 	move_and_slide()
-
+	print(position.y)
 	
 
 func _input(event):

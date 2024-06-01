@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddmw1a8focnyp"]
+
+[ext_resource type="PackedScene" uid="uid://c0gr1eunsxwoj" path="res://geometry/world/Mountain0.96.glb" id="1_5mgm2"]
+[ext_resource type="Script" path="res://scripts/gameplay/world.gd" id="1_pt51b"]
+[ext_resource type="PackedScene" uid="uid://bnnh20ail45mt" path="res://prefabs/character/player.tscn" id="2_4btrf"]
+[ext_resource type="PackedScene" uid="uid://c10q6utmqmbrk" path="res://prefabs/gameplay/hit_screen.tscn" id="3_c2avi"]
+
+[node name="TestingMountain" type="Node3D"]
+script = ExtResource("1_pt51b")
+
+[node name="Mountain0_96" parent="." instance=ExtResource("1_5mgm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98139, 0, 0.472688)
+
+[node name="HitScreen" parent="." instance=ExtResource("3_c2avi")]
+
+[node name="Player" parent="." instance=ExtResource("2_4btrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.13188, 0, 6.13028)
+max_speed = 2
