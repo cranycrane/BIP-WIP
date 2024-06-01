@@ -45,7 +45,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_accept") and is_on_floor():
 			target_velocity.y = jump_speed
 			velocity.y += jump_speed
-	
+
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		lizard_model.look_at(lizard_model.global_transform.origin + direction, Vector3.UP)
