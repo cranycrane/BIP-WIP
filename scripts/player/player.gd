@@ -63,9 +63,7 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.z = 0  # stop the movement
 
-	move_and_slide()
-	print(position.y)
-	
+	move_and_slide()	
 
 func _input(event):
 	pass

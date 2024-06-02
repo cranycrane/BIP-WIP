@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3x22enr0uukk"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/text_label.gd" id="1_87y6d"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_titac"]
+height = 0.396772
+radius = 0.257198
+
+[node name="LabelText" type="Node3D"]
+script = ExtResource("1_87y6d")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.808802, 0)
+text = "Hello world!"
+font_size = 40
+autowrap_mode = 1
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0.0130005, 0, 0)
+shape = SubResource("CylinderShape3D_titac")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

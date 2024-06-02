@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcgx7pq0b3mj5"]
+[gd_scene load_steps=3 format=3 uid="uid://bcgx7pq0b3mj5"]
 
 [ext_resource type="Script" path="res://scripts/npc/npc.gd" id="1_a28ik"]
 
@@ -6,27 +6,8 @@
 radius = 0.2
 height = 0.8
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_q813c"]
-height = 0.396772
-radius = 0.257198
-
 [node name="NPC" type="Node3D"]
 script = ExtResource("1_a28ik")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_tydvk")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0.0130005, 0, 0)
-shape = SubResource("CylinderShape3D_q813c")
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.808802, 0)
-text = "Hello world!"
-font_size = 40
-autowrap_mode = 1
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

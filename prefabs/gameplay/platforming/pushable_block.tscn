@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://vatto345e7s0"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/platforming/pushable_block.gd" id="1_ekfua"]
-[ext_resource type="PackedScene" uid="uid://b6ywslhgtq6jo" path="res://objects/Block_2.4.glb" id="2_x45xd"]
+[ext_resource type="PackedScene" uid="uid://c73ywa71qykl5" path="res://objects/Block_2.4.glb" id="2_x45xd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjtl0"]
 

@@ -91,7 +91,6 @@ projectile_scene = ExtResource("13_x53tx")
 
 [node name="NPC" parent="." instance=ExtResource("12_hvcg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95694, -8.60229)
-player = NodePath("../Player")
 
 [node name="Projectile" parent="." instance=ExtResource("13_x53tx")]
 

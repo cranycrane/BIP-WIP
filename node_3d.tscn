@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://boxxg8oj3qnlt"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/world.gd" id="1_nqyky"]
+[ext_resource type="PackedScene" uid="uid://bnnh20ail45mt" path="res://prefabs/character/player.tscn" id="1_qty38"]
+[ext_resource type="PackedScene" uid="uid://c10q6utmqmbrk" path="res://prefabs/gameplay/hit_screen.tscn" id="2_5ky24"]
+[ext_resource type="PackedScene" uid="uid://crjpbu6baured" path="res://scenes/playground_1.tscn" id="4_mvmjm"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_nqyky")
+
+[node name="HitScreen" parent="." instance=ExtResource("2_5ky24")]
+
+[node name="Player" parent="." instance=ExtResource("1_qty38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.31667, 0.851685, 0.03479)
+jump_speed = 6
+
+[node name="playground1" parent="." instance=ExtResource("4_mvmjm")]
