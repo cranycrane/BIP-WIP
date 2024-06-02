@@ -5,10 +5,10 @@ var lives: int = 3  # Starting number of lives
 @export var max_lives: int = 5  # Maximum number of lives the player can have
 @export var num_of_coins = 5
 
-@onready var heart_container = $HeartContainer
-@onready var coin_container = $CoinContainer
+@onready var heart_container = $CanvasLayer/HeartContainer
+@onready var coin_container = $CanvasLayer/CoinContainer
 @onready var death_screen = $DeathScreen
-@onready var completed_screen = $CompletedScreen
+@onready var completed_screen = $CanvasLayer/CompletedScreen
 
 func update_lives_display(current_lives):
 	if current_lives <= 0:
