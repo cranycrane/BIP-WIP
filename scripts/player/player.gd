@@ -5,7 +5,7 @@ const RESET_DELAY = 0.5
 
 # export says we want to use it elsewhere
 @export var max_speed = 5
-@export var jump_speed = 10
+@export var jump_speed = 5
 @export var fall_acceleration = 25
 @export var max_lives = 3
 @onready var current_lives: int = max_lives
@@ -15,6 +15,7 @@ const RESET_DELAY = 0.5
 var target_velocity = Vector3.ZERO
 var direction = Vector3.ZERO
 var is_staggered = false
+var jump = false
 
 
 signal player_hit(current_lives)
@@ -42,23 +43,21 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_up"):
 			direction.z -= 1
 		# known bug: not jumping when going UP+LEFT
-		if Input.is_action_pressed("ui_accept") and is_on_floor():
-			target_velocity.y = jump_speed
-			velocity.y += jump_speed
+		jump = false
+		if Input.is_action_pressed("ui_accept"):
+			jump = true
 
+	direction = direction.normalized()
 	if direction != Vector3.ZERO:
-		direction = direction.normalized()
 		lizard_model.look_at(lizard_model.global_transform.origin + direction, Vector3.UP)
 
-	target_velocity.x = direction.x * max_speed
-	target_velocity.z = direction.z * max_speed
+	velocity.x = direction.x * max_speed
+	velocity.z = direction.z * max_speed
+	# gravity
+	velocity.y -= fall_acceleration * delta
 	
-
-	if not is_on_floor():
-		target_velocity.y -= fall_acceleration * delta
-
-	if direction != Vector3.ZERO or not is_on_floor():
-		velocity = target_velocity
+	if jump and is_on_floor():
+		velocity.y = jump_speed
 		
 	if direction == Vector3.ZERO:
 		velocity.x = 0
