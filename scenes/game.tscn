@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddq3s1n8pqxu"]
+
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_jlowr"]
+[ext_resource type="PackedScene" uid="uid://cbr2ctajlsj5m" path="res://scenes/main_menu.tscn" id="2_6hdgt"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_jlowr")
+initial_scene = ExtResource("2_6hdgt")
