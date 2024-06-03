@@ -5,7 +5,7 @@ const RESET_DELAY = 0.5
 
 # export says we want to use it elsewhere
 @export var max_speed = 5
-@export var jump_speed = 5
+@export var jump_acceleration = 5
 @export var fall_acceleration = 25
 @export var max_lives = 3
 @onready var current_lives: int = max_lives
@@ -57,7 +57,7 @@ func _physics_process(delta):
 	velocity.y -= fall_acceleration * delta
 	
 	if jump and is_on_floor():
-		velocity.y = jump_speed
+		velocity.y = jump_acceleration
 		
 	if direction == Vector3.ZERO:
 		velocity.x = 0

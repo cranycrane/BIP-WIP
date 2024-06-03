@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wqdnm"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_4kmnv"]
-[ext_resource type="PackedScene" uid="uid://bwto2d3j8bqki" path="res://objects/LizardReference_3.2.glb" id="2_61vqx"]
+[ext_resource type="PackedScene" uid="uid://d2dmwfn2a8c1o" path="res://objects/LizardReference_3.2.glb" id="2_61vqx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7iyax"]
 radius = 0.326734
@@ -12,7 +12,7 @@ height = 0.995721
 script = ExtResource("1_wqdnm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508301, -0.0234604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
 shape = SubResource("CapsuleShape3D_7iyax")
 
 [node name="Lizard" parent="." instance=ExtResource("2_61vqx")]

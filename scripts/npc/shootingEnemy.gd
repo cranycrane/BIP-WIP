@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
-
-const SPEED = 4.0
+const SPEED = 2.0
 const SHOOT_RANGE = 10.0  # Range for shooting projectiles
 
 @export var follow_distance: float = 12.0

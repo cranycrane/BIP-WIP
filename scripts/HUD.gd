@@ -52,6 +52,7 @@ func _on_restart_button_pressed():
 
 func _on_coin_coin_collected():
 	score += 1
+	$Coin
 	if score == num_of_coins:
 		show_completed_screen()
 		return
