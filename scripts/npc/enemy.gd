@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const ATTACK_RANGE = 0.5
+const ATTACK_RANGE = 0.7
 
 @export var speed = 4.0
 @export var player_path : NodePath
@@ -44,7 +44,7 @@ func _process(delta):
 	move_and_slide()
 
 func _target_in_range():
-	return global_position.distance_to(player.global_position) < ATTACK_RANGE
+	global_position.distance_to(player.global_position) < ATTACK_RANGE
 	
 func follow_player():
 	nav_agent.set_target_position(player.global_transform.origin)
