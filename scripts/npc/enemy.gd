@@ -44,7 +44,7 @@ func _process(delta):
 	move_and_slide()
 
 func _target_in_range():
-	global_position.distance_to(player.global_position) < ATTACK_RANGE
+	return global_position.distance_to(player.global_position) < ATTACK_RANGE
 	
 func follow_player():
 	nav_agent.set_target_position(player.global_transform.origin)

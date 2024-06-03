@@ -23,14 +23,25 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Arr
 radius = 0.3
 height = 1.0
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_brus3"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r1ihf"]
+sky_top_color = Color(0, 0.568627, 0.909804, 1)
+sky_horizon_color = Color(0.278431, 0.854902, 0.992157, 1)
+ground_bottom_color = Color(0, 0.203922, 0.211765, 1)
+ground_horizon_color = Color(0.278431, 0.854902, 0.992157, 1)
 
-[sub_resource type="Sky" id="Sky_sy4qi"]
-sky_material = SubResource("ProceduralSkyMaterial_brus3")
+[sub_resource type="Sky" id="Sky_sqnik"]
+sky_material = SubResource("ProceduralSkyMaterial_r1ihf")
 
-[sub_resource type="Environment" id="Environment_yr4us"]
+[sub_resource type="Environment" id="Environment_1xjir"]
 background_mode = 2
-sky = SubResource("Sky_sy4qi")
+sky = SubResource("Sky_sqnik")
+ambient_light_sky_contribution = 0.0
+reflected_light_source = 1
+sdfgi_read_sky_light = false
+glow_intensity = 8.0
+fog_light_energy = 4.96
+fog_density = 0.0
+fog_height = -28.71
 
 [node name="MountainScene" type="Node3D"]
 script = ExtResource("1_m0ib1")
@@ -60,7 +71,7 @@ shape = SubResource("CapsuleShape3D_epqda")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CameraPivot" parent="Mountain0_97/Player" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 3.5)
 
 [node name="SpringArm3D" parent="Mountain0_97/Player/CameraPivot" index="0"]
 spring_length = 2.08165e-12
@@ -108,12 +119,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7782, 0.578247, 3.15594)
 
 [node name="Dialogue" parent="Mountain0_97/NPC2" instance=ExtResource("12_n62pd")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.809827, 0.586669, 0, -0.586669, 0.809827, 7, 10.9805, 6.2734)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1xjir")
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="LightBack" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(0.642788, 0.663414, 0.383022, -1.74393e-16, -0.5, 0.866025, 0.766044, -0.55667, -0.321394, 0, 0, 0)
+light_color = Color(1, 1, 0.705882, 1)
+light_energy = 0.8
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_yr4us")
+[node name="SunFront" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.766044, -0.492404, -0.413176, -2.24196e-16, -0.642788, 0.766045, -0.642788, 0.586824, 0.492404, 7, 10.9805, 6.2734)
+light_color = Color(1, 0.945098, 0.74902, 1)
+light_energy = 0.5
+sky_mode = 1
 
 [connection signal="player_hit" from="Mountain0_97/Player" to="Mountain0_97/Player" method="_on_player_hit"]
 [connection signal="player_hit" from="Mountain0_97/Player" to="HUD" method="_on_player_player_hit"]
