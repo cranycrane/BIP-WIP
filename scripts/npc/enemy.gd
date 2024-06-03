@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const ATTACK_RANGE = 1
+const ATTACK_RANGE = 0.5
 
 @export var speed = 4.0
 @export var player_path : NodePath
