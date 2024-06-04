@@ -1,11 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://boyhdxs14agwg"]
+[gd_scene load_steps=21 format=3 uid="uid://boyhdxs14agwg"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/world.gd" id="1_m0ib1"]
 [ext_resource type="PackedScene" uid="uid://bnnh20ail45mt" path="res://prefabs/character/player.tscn" id="2_5pt15"]
-[ext_resource type="Texture2D" uid="uid://d1rbqld7vtkwq" path="res://geometry/world/autumn_field_puresky_2k.hdr" id="2_uudm2"]
+[ext_resource type="Texture2D" uid="uid://d4da4k4xlkefs" path="res://geometry/world/autumn_field_puresky_2k.hdr" id="2_uudm2"]
 [ext_resource type="PackedScene" uid="uid://c10q6utmqmbrk" path="res://prefabs/gameplay/hit_screen.tscn" id="4_qehhh"]
 [ext_resource type="PackedScene" uid="uid://dkbtgrdu35uav" path="res://prefabs/gameplay/hud.tscn" id="5_h2uld"]
-[ext_resource type="PackedScene" uid="uid://dm4navbpefrtq" path="res://geometry/world/Mountain0.98nc.glb" id="5_s6gwx"]
+[ext_resource type="PackedScene" uid="uid://bsgioom1pbveo" path="res://geometry/world/Mountain0.98nc.glb" id="5_s6gwx"]
 [ext_resource type="PackedScene" uid="uid://bn05oc16bv8kd" path="res://prefabs/gameplay/platforming/moving_block.tscn" id="6_eblp4"]
 [ext_resource type="PackedScene" uid="uid://djuaoq7blvrls" path="res://prefabs/collectables/coin.tscn" id="6_wiqsv"]
 [ext_resource type="PackedScene" uid="uid://c866pdji0vdsm" path="res://prefabs/gameplay/sensors/pressure_plate.tscn" id="8_p6buj"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://djiycmbjjnmqw" path="res://prefabs/gameplay/shootingEnemy.tscn" id="11_oov7a"]
 [ext_resource type="PackedScene" uid="uid://cfq0aps387o0v" path="res://prefabs/gameplay/projectile.tscn" id="12_57uu4"]
 [ext_resource type="PackedScene" uid="uid://cp00cwi43lk6s" path="res://prefabs/gameplay/dialogue.tscn" id="12_n62pd"]
+[ext_resource type="Resource" uid="uid://djg5jbbp2gfi1" path="res://dialogues/test.tres" id="16_voy1x"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_g5qlc"]
 panorama = ExtResource("2_uudm2")
@@ -36,6 +37,7 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Arr
 
 [node name="MountainScene" type="Node3D"]
 script = ExtResource("1_m0ib1")
+player_node_path = NodePath("Mountain0_98nc/Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.433013, 0.25, 0, -0.5, 0.866025, 0.5, -0.75, -0.433013, 3, 2, 7)
@@ -120,6 +122,7 @@ message = "Jump jump jump!"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.08165e-12, 6)
 
 [node name="Dialogue" parent="Mountain0_98nc/NPC2" instance=ExtResource("12_n62pd")]
+dialogue_path = ExtResource("16_voy1x")
 
 [connection signal="player_hit" from="Mountain0_98nc/Player" to="HUD" method="_on_player_player_hit"]
 [connection signal="player_hit" from="Mountain0_98nc/Player" to="Mountain0_98nc/Player" method="_on_player_hit"]
