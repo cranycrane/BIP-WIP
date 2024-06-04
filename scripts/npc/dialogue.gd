@@ -2,7 +2,8 @@ extends Node3D
 
 @export var dialogue_path : DialogueData
 
-@onready var dialogue_box = $DialogueControl/BoxContainer/DialogueBox
+@onready var dialogue_box = $DialogueControl/CanvasLayer/DialogueBox
+@onready var interact_hint = $InteractHint
 
 # Define the key to trigger the dialogue
 const INTERACT_KEY = "ui_interact"
@@ -20,11 +21,13 @@ func _ready():
 func _process(delta):
 	# Check if the player is in the area and the interact key is pressed
 	if player_in_area and Input.is_action_just_pressed(INTERACT_KEY):
+		interact_hint.visible = false
 		start_dialogue()
 
 func _on_area_3d_body_entered(body):
 	# Check if the entered body is the player
 	if body.name == "Player":
+		interact_hint.visible = true
 		player_in_area = body
 		print("PLAYER ENTERED")
 		emit_signal("player_entered", body)
