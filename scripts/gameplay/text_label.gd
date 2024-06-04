@@ -2,7 +2,7 @@ extends Node
 
 
 @export var player: NodePath
-@export var message = "Hello world"
+@export var message = "T"
 
 var player_node: Node3D
 

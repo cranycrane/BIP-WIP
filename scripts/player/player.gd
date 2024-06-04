@@ -11,11 +11,10 @@ const RESET_DELAY = 0.5
 @onready var current_lives: int = max_lives
 @onready var lizard_model = $Lizard
 
-
 var target_velocity = Vector3.ZERO
 var direction = Vector3.ZERO
 var is_staggered = false
-var jump = false
+var jump_released = true
 
 
 signal player_hit(current_lives)
@@ -42,10 +41,13 @@ func _physics_process(delta):
 			direction.z += 1
 		if Input.is_action_pressed("ui_up"):
 			direction.z -= 1
-		# known bug: not jumping when going UP+LEFT
-		jump = false
-		if Input.is_action_pressed("ui_accept"):
-			jump = true
+		
+		if Input.is_action_pressed("ui_accept") and is_on_floor() and jump_released:
+			velocity.y = jump_acceleration
+			jump_released = false
+		
+		if Input.is_action_just_released("ui_accept"):
+			jump_released = true
 
 	direction = direction.normalized()
 	if direction != Vector3.ZERO:
@@ -55,9 +57,6 @@ func _physics_process(delta):
 	velocity.z = direction.z * max_speed
 	# gravity
 	velocity.y -= fall_acceleration * delta
-	
-	if jump and is_on_floor():
-		velocity.y = jump_acceleration
 		
 	if direction == Vector3.ZERO:
 		velocity.x = 0

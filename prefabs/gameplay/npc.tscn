@@ -3,11 +3,12 @@
 [ext_resource type="Script" path="res://scripts/npc/npc.gd" id="1_a28ik"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tydvk"]
-radius = 0.2
-height = 1.0
+radius = 0.15
+height = 0.6
 
 [node name="NPC" type="Node3D"]
 script = ExtResource("1_a28ik")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.3, 2.08165e-12)
 mesh = SubResource("CapsuleMesh_tydvk")

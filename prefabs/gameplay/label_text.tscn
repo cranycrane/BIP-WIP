@@ -10,8 +10,8 @@ radius = 0.257198
 script = ExtResource("1_87y6d")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.808802, 0)
-text = "Hello world!"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.8, 2.08165e-12)
+text = "T"
 font_size = 40
 autowrap_mode = 1
 

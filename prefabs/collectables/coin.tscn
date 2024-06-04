@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://djuaoq7blvrls"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/coin.gd" id="1_gget7"]
-[ext_resource type="PackedScene" uid="uid://b874byhg3kqnn" path="res://objects/MagicCoin1.0.S.glb" id="1_ruo3n"]
+[ext_resource type="PackedScene" uid="uid://b874byhg3kqnn" path="res://objects/MagicCoin1.0.glb" id="2_747va"]
 [ext_resource type="AudioStream" uid="uid://du25l37i7p6uv" path="res://audio/collected_coin.mp3" id="3_ngr3f"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2jp20"]
@@ -10,7 +10,7 @@ radius = 0.13473
 [node name="Coin" type="Area3D"]
 script = ExtResource("1_gget7")
 
-[node name="MagicCoin1_0_S" parent="." instance=ExtResource("1_ruo3n")]
+[node name="MagicCoin1_0_S" parent="." instance=ExtResource("2_747va")]
 
 [node name="CoinSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_ngr3f")
