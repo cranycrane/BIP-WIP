@@ -1,6 +1,8 @@
 extends Node3D
 
-@onready var dialogue_box = $DialogueControl/CanvasLayer/DialogueBox
+@export var dialogue_path : DialogueData
+
+@onready var dialogue_box = $DialogueControl/BoxContainer/DialogueBox
 
 # Define the key to trigger the dialogue
 const INTERACT_KEY = "ui_interact"
@@ -12,7 +14,8 @@ signal player_entered
 var player_in_area = null
 
 func _ready():
-	dialogue_box.add_theme_font_size_override("font_size", 128) #!not working
+	dialogue_box.data = dialogue_path
+	dialogue_box.add_theme_font_size_override("font_size", 128)
 
 func _process(delta):
 	# Check if the player is in the area and the interact key is pressed
