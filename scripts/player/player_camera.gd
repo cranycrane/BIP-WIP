@@ -8,10 +8,11 @@ extends Node3D
 @onready var camera3D: Camera3D = $Camera
 
 #@onready var tween: Tween = $Tween 
-var tween = create_tween()
+#not working
 
 var transitioning: bool = false
 func transition_camera(from: Camera3D, to: Camera3D, duration: float = 1.0 ) -> void:
+	print("tween")
 	if transitioning: return
 	# Copy the parameters of the first camera
 	camera3D.fov = from.fov
@@ -19,11 +20,11 @@ func transition_camera(from: Camera3D, to: Camera3D, duration: float = 1.0 ) -> 
 	# Move our transition camera to the first camera position
 	camera3D.global_transform = from.global_transform
 	# Make our transition camera current
-	camera3D.current = true
+	camera3D.enabled = true
 	transitioning = true
 	# Move to the second camera, while also adjusting the parameters to
 	# match the second camera
-	tween = create_tween()
+	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -33,8 +34,9 @@ func transition_camera(from: Camera3D, to: Camera3D, duration: float = 1.0 ) -> 
 	# Wait for the tween to complete
 	await tween.finished
 	# Make the second camera current
-	to.current = true
+	to.enabled = true
 	transitioning = false
 	
 func cameraTransitionAnimation() -> void:
+	print("transition")
 	transition_camera(cameraFrom,cameraTo, 3.0)

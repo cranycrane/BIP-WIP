@@ -38,5 +38,5 @@ func _on_area_3d_body_exited(body):
 
 func start_dialogue():
 	print("Dialogue started")
-	camera_player.cameraTransitionAnlimation
+	camera_player.cameraTransitionAnimation
 	dialogue_box.start('START')
