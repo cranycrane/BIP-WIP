@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cp00cwi43lk6s"]
+[gd_scene load_steps=16 format=3 uid="uid://cp00cwi43lk6s"]
 
 [ext_resource type="Script" path="res://scripts/npc/DialogueControl.gd" id="1_ako86"]
 [ext_resource type="Script" path="res://scripts/npc/dialogue.gd" id="1_jhnqp"]
@@ -17,6 +17,17 @@ subpixel_positioning = 0
 [sub_resource type="Theme" id="Theme_4d7cq"]
 default_font = SubResource("SystemFont_s2f7o")
 default_font_size = 45
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0b5l"]
+bg_color = Color(0.45098, 0.45098, 0.45098, 0.254902)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_erskn"]
 script = ExtResource("2_20lgp")
@@ -54,7 +65,6 @@ script = ExtResource("1_ako86")
 [node name="CanvasLayer" type="CanvasLayer" parent="DialogueControl"]
 
 [node name="DialogueBox" type="Panel" parent="DialogueControl/CanvasLayer"]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -68,8 +78,9 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_stretch_ratio = 0.38
 theme = SubResource("Theme_4d7cq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_n0b5l")
 script = ExtResource("1_niad8")
-hide_portrait = true
+sample_portrait = null
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_erskn"), SubResource("RichTextEffect_rbq6v"), SubResource("RichTextEffect_y8y1c")])
 
 [node name="InteractHint" type="Control" parent="."]

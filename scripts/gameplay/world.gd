@@ -1,13 +1,22 @@
 extends Node3D
 
+@export var player_node_path : NodePath
+@export var minimum_y_level = -10
+
 @onready var hit_screen = $HitScreen
 
+var player = null
+var player_spawn_position : Vector3
+
 func _ready():
+	player = get_node(player_node_path)
+	player_spawn_position = player.global_transform.origin
 	hit_screen.visible = false
 	
 func _process(double):
-	#print("FPS %d" % Engine.get_frames_per_second())
-	pass
+	if player.global_transform.origin.y < minimum_y_level:
+		player.global_transform.origin = player_spawn_position
+	
 
 func _on_player_player_hit(current_lives):
 	hit_screen.visible = true
