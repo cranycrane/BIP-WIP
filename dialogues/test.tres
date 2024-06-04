@@ -9,13 +9,52 @@ starts = {
 }
 nodes = {
 "0_1": {
-"link": &"1_1",
-"offset": Vector2(-20, 400),
+"link": &"5_1",
+"offset": Vector2(-460, 320),
 "start_id": "START"
 },
 "1_1": {
-"dialogue": "Hello this is test dialog I have created",
-"offset": Vector2(293, 387),
+"dialogue": "Hey, Lizard, you better hurry.",
+"offset": Vector2(340, 340),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(612.362, 376.455),
+"speaker": "Jake"
+},
+"1_2": {
+"dialogue": "You should know by now, but just in case, don't forget you can Jump (SPACE), and Hit enemies (E).",
+"offset": Vector2(1120, 340),
+"options": {
+0: {
+"condition": {},
+"link": &"4_1",
+"text": ""
+}
+},
+"size": Vector2(498.087, 457.336),
+"speaker": "Jake"
+},
+"1_3": {
+"dialogue": "Hey, you again, Lizard I explained what you needed for now.",
+"offset": Vector2(340, 940),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(610.305, 345.95),
+"speaker": "Jake"
+},
+"1_4": {
+"dialogue": "So what are you hesitant about? Just go.",
+"offset": Vector2(1120, 940),
 "options": {
 0: {
 "condition": {},
@@ -23,10 +62,30 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
-"speaker": "Jakub"
+"size": Vector2(495.753, 406.851),
+"speaker": "Jake"
+},
+"4_1": {
+"link": "END",
+"offset": Vector2(1720, 260),
+"type": 0,
+"value": "false",
+"variable": "first"
+},
+"5_1": {
+"false": &"1_3",
+"offset": Vector2(-100, 340),
+"operator": 0,
+"true": &"1_1",
+"value1": "{{first}}",
+"value2": "true"
 }
 }
-variables = {}
+variables = {
+"first": {
+"type": 1,
+"value": true
+}
+}
 strays = Array[String]([])
 characters = ""

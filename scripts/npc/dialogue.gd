@@ -5,9 +5,7 @@ extends Node3D
 @onready var dialogue_box = $DialogueControl/CanvasLayer/DialogueBox
 @onready var interact_hint = $InteractHint
 
-# Define the key to trigger the dialogue
-const INTERACT_KEY = "ui_interact"
-
+@onready var camera_player = $"../../Player/CameraPivot" #dragged an dropped
 # Signal to connect when the player enters the area
 signal player_entered
 
@@ -19,7 +17,7 @@ func _ready():
 
 func _process(delta):
 	# Check if the player is in the area and the interact key is pressed
-	if player_in_area and Input.is_action_just_pressed(INTERACT_KEY):
+	if player_in_area and Input.is_action_just_pressed("ui_dialogue_start") && interact_hint.visible:
 		interact_hint.visible = false
 		start_dialogue()
 
@@ -40,4 +38,5 @@ func _on_area_3d_body_exited(body):
 
 func start_dialogue():
 	print("Dialogue started")
+	camera_player.cameraTransitionAnlimation
 	dialogue_box.start('START')

@@ -19,15 +19,21 @@ default_font = SubResource("SystemFont_s2f7o")
 default_font_size = 45
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0b5l"]
-bg_color = Color(0.45098, 0.45098, 0.45098, 0.254902)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.0784314, 0.0784314, 0.0784314, 0.705882)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-expand_margin_left = 50.0
-expand_margin_top = 50.0
-expand_margin_right = 50.0
-expand_margin_bottom = 50.0
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 30.0
+expand_margin_bottom = 30.0
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_erskn"]
 script = ExtResource("2_20lgp")
@@ -58,6 +64,7 @@ transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 2.08165e-12, 2.08165e-1
 shape = SubResource("CylinderShape3D_y7iyw")
 
 [node name="DialogueControl" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ako86")
@@ -70,17 +77,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -700.0
-offset_top = -380.0
-offset_right = 700.0
-offset_bottom = -80.0
+offset_left = -600.0
+offset_top = -330.0
+offset_right = 600.0
+offset_bottom = -80.0002
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_stretch_ratio = 0.38
 theme = SubResource("Theme_4d7cq")
 theme_override_styles/panel = SubResource("StyleBoxFlat_n0b5l")
 script = ExtResource("1_niad8")
 sample_portrait = null
+scroll_speed = 3
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_erskn"), SubResource("RichTextEffect_rbq6v"), SubResource("RichTextEffect_y8y1c")])
 
 [node name="InteractHint" type="Control" parent="."]
@@ -98,6 +105,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="InteractHint"]
+self_modulate = Color(0.0784314, 0.0784314, 0.0784314, 0.588235)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 7
@@ -106,9 +114,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -50.0
-offset_top = -243.0
+offset_top = -220.0
 offset_right = 50.0
-offset_bottom = -143.0
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_on1ey")
@@ -126,8 +134,10 @@ offset_right = 20.0
 offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "E"
+text = "T"
 label_settings = SubResource("LabelSettings_4pwx8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -42,11 +42,11 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_up"):
 			direction.z -= 1
 		
-		if Input.is_action_pressed("ui_accept") and is_on_floor() and jump_released:
+		if Input.is_action_pressed("ui_jump") and is_on_floor() and jump_released:
 			velocity.y = jump_acceleration
 			jump_released = false
 		
-		if Input.is_action_just_released("ui_accept"):
+		if Input.is_action_just_released("ui_jump"):
 			jump_released = true
 
 	direction = direction.normalized()

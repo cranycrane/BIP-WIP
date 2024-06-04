@@ -1,9 +1,9 @@
 extends Node2D
 
-var score: int = 0
+var coins_collected: int = 0
 var lives: int = 3  # Starting number of lives
 @export var max_lives: int = 5  # Maximum number of lives the player can have
-@export var num_of_coins = 5
+@export var coins_goal = 5
 
 @onready var heart_container = $CanvasLayer/HeartContainer
 @onready var coin_container = $CanvasLayer/CoinContainer
@@ -35,7 +35,7 @@ func update_scores_display():
 		coin.queue_free()
 	
 	# Add coin icons based on the current score
-	for i in range(score):
+	for i in range(coins_collected):
 		var coin = TextureRect.new()
 		coin.expand_mode = TextureRect.EXPAND_FIT_WIDTH
 		coin.texture = preload("res://art/coin.png")
@@ -51,9 +51,9 @@ func _on_restart_button_pressed():
 	get_tree().reload_current_scene()
 
 func _on_coin_coin_collected():
-	score += 1
+	coins_collected += 1
 	$Coin
-	if score == num_of_coins:
+	if coins_collected == coins_goal:
 		show_completed_screen()
 		return
 		
