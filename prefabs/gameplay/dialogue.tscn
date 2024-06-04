@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cp00cwi43lk6s"]
+[gd_scene load_steps=13 format=3 uid="uid://cp00cwi43lk6s"]
 
 [ext_resource type="Script" path="res://scripts/npc/DialogueControl.gd" id="1_ako86"]
 [ext_resource type="Script" path="res://scripts/npc/dialogue.gd" id="1_jhnqp"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="1_niad8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="2_20lgp"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="3_mkd4t"]
-[ext_resource type="Resource" uid="uid://djg5jbbp2gfi1" path="res://dialogues/test.tres" id="3_v2e5p"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="4_s7nms"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_y7iyw"]
@@ -13,6 +12,7 @@ height = 0.396772
 radius = 0.257198
 
 [sub_resource type="SystemFont" id="SystemFont_s2f7o"]
+subpixel_positioning = 0
 
 [sub_resource type="Theme" id="Theme_4d7cq"]
 default_font = SubResource("SystemFont_s2f7o")
@@ -67,13 +67,13 @@ grow_vertical = 0
 pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="DialogueBox" type="Panel" parent="DialogueControl/BoxContainer"]
+visible = false
 custom_minimum_size = Vector2(1200, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_4d7cq")
 script = ExtResource("1_niad8")
-data = ExtResource("3_v2e5p")
 hide_portrait = true
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_erskn"), SubResource("RichTextEffect_rbq6v"), SubResource("RichTextEffect_y8y1c")])
 
