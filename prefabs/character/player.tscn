@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnnh20ail45mt"]
+[gd_scene load_steps=6 format=3 uid="uid://bnnh20ail45mt"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wqdnm"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_4kmnv"]
 [ext_resource type="PackedScene" uid="uid://bwto2d3j8bqki" path="res://objects/LizardReference_3.2.glb" id="2_61vqx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7iyax"]
-radius = 0.326734
+radius = 0.286854
 height = 0.995721
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp0uy"]
+radius = 0.505772
+height = 1.08067
+
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_wqdnm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -27,3 +32,16 @@ spring_length = 3.0
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.979435, 0.201762, 0, -0.201762, 0.979435, 0, -0.882324, -1.33501)
 fov = 45.3
+
+[node name="PlayerHitBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473431, 0)
+shape = SubResource("CapsuleShape3D_fp0uy")
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_body_entered"]
+[connection signal="body_exited" from="PlayerHitBox" to="." method="_on_player_hit_box_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

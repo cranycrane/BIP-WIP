@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://siaojteegwfd"]
+[gd_scene load_steps=5 format=3 uid="uid://siaojteegwfd"]
 
 [ext_resource type="Script" path="res://scripts/npc/enemy.gd" id="1_d776h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_43t56"]
-radius = 0.25
-height = 1.0
+radius = 0.253606
+height = 1.2
 
-[node name="Enemy" type="CharacterBody3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kg2jw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ad0rp"]
+radius = 0.406824
+height = 1.02295
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_d776h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -18,7 +24,19 @@ path_height_offset = 0.15
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 radius = 0.25
 height = 1.0
+material = SubResource("StandardMaterial3D_kg2jw")
 
 [node name="HitTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="EnemyHitBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHitBox"]
+shape = SubResource("CapsuleShape3D_ad0rp")
+
+[node name="ColorTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="EnemyHitBox" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="ColorTimer" to="." method="_on_color_timer_timeout"]

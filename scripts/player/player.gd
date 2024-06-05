@@ -8,14 +8,24 @@ const RESET_DELAY = 0.5
 @export var jump_acceleration = 5
 @export var fall_acceleration = 25
 @export var max_lives = 3
+@export var attack_rotate_speed = 5
+@export var attack_damage = 1
+@export var attack_knockback = 10
+@export var attack_cooldown = 2
+
+
 @onready var current_lives: int = max_lives
 @onready var lizard_model = $Lizard
+@onready var attack_timer = $AttackTimer
 
 var target_velocity = Vector3.ZERO
 var direction = Vector3.ZERO
 var is_staggered = false
 var jump_released = true
-
+var is_attacking = false
+var can_attack = false
+var enemy_attack_cooldown = false
+var enemies_in_range = []
 
 signal player_hit(current_lives)
 
@@ -24,6 +34,7 @@ func _ready():
 	# initial to set up hearts correctly
 	# call deferred because want to have everything intialized
 	call_deferred("_emit_player_hit")
+	attack_timer.wait_time = attack_cooldown
 
 func _emit_player_hit():
 	emit_signal("player_hit", current_lives)
@@ -48,6 +59,17 @@ func _physics_process(delta):
 		
 		if Input.is_action_just_released("ui_jump"):
 			jump_released = true
+			
+		if Input.is_action_pressed("ui_attack") and attack_timer.is_stopped() and not is_attacking:
+			is_attacking = true
+			print("ATTACKING")
+			if len(enemies_in_range) > 0:
+				print("DEALING DAMAGE TO ENEMY")
+				attack()
+			attack_timer.start()
+				
+		if Input.is_action_just_released("ui_attack"):
+			is_attacking = false
 
 	direction = direction.normalized()
 	if direction != Vector3.ZERO:
@@ -64,10 +86,14 @@ func _physics_process(delta):
 
 	move_and_slide()	
 
-func _input(event):
-	pass
-			
+func attack():
+	for enemy in enemies_in_range:
+		var dir = global_position.direction_to(enemy.global_position)
+		enemy.hit(dir, attack_damage, attack_knockback)
+		
 func hit(dir):
+	print("GETTING HIT")
+	return
 	# decrease health
 	current_lives -= 1
 	emit_signal("player_hit", current_lives)
@@ -81,6 +107,20 @@ func hit(dir):
 	is_staggered = false
 	direction = Vector3.ZERO
 
+func player():
+	pass
 
 func _on_player_hit(current_lives):
 	pass # Replace with function body.
+
+func _on_player_hit_box_body_entered(body):		
+	if body.is_in_group("enemy"):
+		enemies_in_range.append(body)
+
+func _on_player_hit_box_body_exited(body):
+	if body.is_in_group("enemy"):
+		enemies_in_range.erase(body)
+
+
+func _on_attack_timer_timeout():
+	print("TIMER TIMEOUT")

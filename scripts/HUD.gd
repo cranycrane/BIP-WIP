@@ -13,6 +13,7 @@ var lives: int = 3  # Starting number of lives
 func update_lives_display(current_lives):
 	if current_lives <= 0:
 		show_death_screen()
+		return
 		
 	# Clear all heart icons
 	print("Getting hit, lives: %s" % current_lives)
