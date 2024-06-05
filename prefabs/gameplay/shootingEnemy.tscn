@@ -6,7 +6,9 @@
 radius = 0.25
 height = 1.0
 
-[node name="ShootingEnemy" type="CharacterBody3D"]
+[node name="ShootingEnemy" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_vnkjb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

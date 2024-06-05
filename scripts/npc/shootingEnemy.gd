@@ -23,6 +23,7 @@ func _ready():
 	shoot_timer.wait_time = shoot_interval
 	shoot_timer.one_shot = false  # Make sure the timer repeats
 	shoot_timer.start()
+	add_to_group("enemy")
 
 func _process(delta):		
 	var distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
