@@ -72,6 +72,7 @@ script = ExtResource("1_ako86")
 [node name="CanvasLayer" type="CanvasLayer" parent="DialogueControl"]
 
 [node name="DialogueBox" type="Panel" parent="DialogueControl/CanvasLayer"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

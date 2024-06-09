@@ -53,12 +53,13 @@ func _on_restart_button_pressed():
 
 func _on_coin_coin_collected():
 	coins_collected += 1
-	$Coin
-	if coins_collected == coins_goal:
-		show_completed_screen()
-		return
-		
+	#$Coin
 	update_scores_display()
+
+	if coins_collected == coins_goal:
+		await get_tree().create_timer(2.0).timeout
+		show_completed_screen()
+	return
 
 func show_completed_screen():
 	completed_screen.show()
@@ -66,3 +67,4 @@ func show_completed_screen():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
