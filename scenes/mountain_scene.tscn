@@ -77,6 +77,9 @@ transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-
 [node name="Coin5" parent="Coins" instance=ExtResource("6_wiqsv")]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 14.5, 0.2, 0.5)
 
+[node name="Coin13" parent="Coins" instance=ExtResource("6_wiqsv")]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 12.25, 0.2, 4.75)
+
 [node name="Coin6" parent="Coins" instance=ExtResource("6_wiqsv")]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 8, 4.2, -3.5)
 
@@ -89,13 +92,22 @@ transform = Transform3D(-4.37114e-08, 7.15711e-15, 1, 6.75704e-08, 1, -3.48787e-
 [node name="Coin9" parent="Coins" instance=ExtResource("6_wiqsv")]
 transform = Transform3D(1, -7.84416e-08, 3.55271e-15, 6.75704e-08, 1, -3.48787e-16, 9.47312e-16, 3.48787e-16, 1, 1.5, 3.2, -4)
 
+[node name="Coin10" parent="Coins" instance=ExtResource("6_wiqsv")]
+transform = Transform3D(-4.37114e-08, 3.08e-15, -1, 6.75704e-08, 1, -3.48787e-16, 1, -7.84416e-08, -4.37114e-08, 12, 5.2, -6)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("6_wiqsv")]
+transform = Transform3D(-4.37114e-08, 3.08e-15, -1, 6.75704e-08, 1, -3.48787e-16, 1, -7.84416e-08, -4.37114e-08, 12.5, 5.2, -5.5)
+
+[node name="Coin12" parent="Coins" instance=ExtResource("6_wiqsv")]
+transform = Transform3D(-4.37114e-08, 3.08e-15, -1, 6.75704e-08, 1, -3.48787e-16, 1, -7.84416e-08, -4.37114e-08, 12.5, 5.2, -6.5)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5843, 2.08166e-12, 2.39744)
 visible = false
 navigation_mesh = SubResource("NavigationMesh_qoqyv")
 
 [node name="Player" parent="." instance=ExtResource("2_5pt15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.1633e-12, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.1633e-12, 7.5)
 max_speed = 2
 fall_acceleration = 18
 
@@ -157,7 +169,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4.1633e-12, 3)
 player = NodePath("../../Player")
 
 [node name="npcWelcome" parent="." instance=ExtResource("10_d6bax")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 4.1633e-12, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.1633e-12, 6.5)
 
 [node name="dialogueWelcome" parent="npcWelcome" instance=ExtResource("12_n62pd")]
 dialogue_path = ExtResource("16_voy1x")
@@ -170,10 +182,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.0
 [connection signal="coin_collected" from="Coins/Coin3" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin4" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin5" to="HUD" method="_on_coin_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin13" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin6" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin7" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin8" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin9" to="HUD" method="_on_coin_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin10" to="HUD" method="_on_coin_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin11" to="HUD" method="_on_coin_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin12" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="player_hit" from="Player" to="HUD" method="_on_player_player_hit"]
 [connection signal="player_hit" from="Player" to="Player" method="_on_player_hit"]
 
