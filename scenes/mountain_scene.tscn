@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/gameplay/world.gd" id="1_m0ib1"]
 [ext_resource type="PackedScene" uid="uid://bnnh20ail45mt" path="res://prefabs/character/player.tscn" id="2_5pt15"]
-[ext_resource type="Texture2D" uid="uid://d4da4k4xlkefs" path="res://geometry/world/autumn_field_puresky_2k.hdr" id="2_uudm2"]
+[ext_resource type="Texture2D" uid="uid://d1rbqld7vtkwq" path="res://geometry/world/autumn_field_puresky_2k.hdr" id="2_uudm2"]
 [ext_resource type="PackedScene" uid="uid://c10q6utmqmbrk" path="res://prefabs/gameplay/hit_screen.tscn" id="4_qehhh"]
 [ext_resource type="PackedScene" uid="uid://dkbtgrdu35uav" path="res://prefabs/gameplay/hud.tscn" id="5_h2uld"]
 [ext_resource type="PackedScene" uid="uid://bn05oc16bv8kd" path="res://prefabs/gameplay/platforming/moving_block.tscn" id="6_eblp4"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://djiycmbjjnmqw" path="res://prefabs/gameplay/shootingEnemy.tscn" id="11_oov7a"]
 [ext_resource type="PackedScene" uid="uid://cfq0aps387o0v" path="res://prefabs/gameplay/projectile.tscn" id="12_57uu4"]
 [ext_resource type="PackedScene" uid="uid://cp00cwi43lk6s" path="res://prefabs/gameplay/dialogue.tscn" id="12_n62pd"]
-[ext_resource type="PackedScene" uid="uid://bkbvw303skpbc" path="res://geometry/world/Mountain0.99.glb" id="16_2f4we"]
+[ext_resource type="PackedScene" uid="uid://clgxhft785fmd" path="res://geometry/world/Mountain0.99.glb" id="16_2f4we"]
 [ext_resource type="Resource" uid="uid://djg5jbbp2gfi1" path="res://dialogues/test.tres" id="16_voy1x"]
 [ext_resource type="Script" path="res://scripts/npc/ghoul_area.gd" id="17_toggp"]
 
@@ -178,7 +178,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.08165e-12)
 shape = SubResource("BoxShape3D_0g58j")
 
 [node name="GhoulEnemy" parent="GhoulArea3D" instance=ExtResource("9_s0van")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.5, 2.08165e-12)
+max_speed = 0.6
 player_path = NodePath("../../Player")
 
 [connection signal="coin_collected" from="Coins/Coin1" to="HUD" method="_on_coin_coin_collected"]
