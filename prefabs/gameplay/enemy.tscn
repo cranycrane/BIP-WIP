@@ -41,11 +41,11 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHitBox"]
 shape = SubResource("CapsuleShape3D_ad0rp")
 
-[node name="ColorTimer" type="Timer" parent="."]
+[node name="GotHitTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="body_entered" from="EnemyHitBox" to="." method="_on_enemy_hit_box_body_entered"]
 [connection signal="body_exited" from="EnemyHitBox" to="." method="_on_enemy_hit_box_body_exited"]
-[connection signal="timeout" from="ColorTimer" to="." method="_on_color_timer_timeout"]
+[connection signal="timeout" from="GotHitTimer" to="." method="_on_color_timer_timeout"]
 
 [editable path="Ghol_Ground1_2"]

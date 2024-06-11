@@ -93,7 +93,7 @@ func _physics_process(delta):
 func attack():
 	for enemy in enemies_in_range:
 		var dir = global_position.direction_to(enemy.global_position)
-		enemy.hit(dir, attack_damage, attack_knockback)
+		enemy.hit(direction, attack_damage, attack_knockback)
 		
 func hit(dir):
 	print("GETTING HIT")

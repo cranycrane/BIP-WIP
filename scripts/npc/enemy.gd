@@ -5,11 +5,11 @@ extends CharacterBody3D
 
 @export var player_path : NodePath
 @export var attack_speed = 2.0
-@export var hit_color_time = 0.5
+@export var got_hit_time = 0.5
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var hit_timer = $HitTimer  # Reference to the Timer node
-@onready var color_timer = $ColorTimer
+@onready var got_hit_timer = $GotHitTimer
 @onready var animation_player = $Ghol_Ground1_2/AnimationPlayer
 
 
@@ -39,11 +39,11 @@ func _process(delta):
 	if lives <= 0:
 		# todo play death sound
 		queue_free()
-			
+		
 	direction = Vector3.ZERO
 	
 	
-	if not hit_timer.is_stopped() and color_timer.is_stopped():
+	if not hit_timer.is_stopped():
 		return
 
 	var distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
@@ -52,14 +52,13 @@ func _process(delta):
 	var enemy_position = global_position
 
 	# Calculate the direction to the player, ignoring the Y axis
-	
+
 	if detected_player: #Follow player
 		direction = (player_position - enemy_position)
 		#direction.y = 0  #implicit if on same height base
 		direction = direction.normalized()
-		print(direction)
 	else:	#Return to original position with small threshold
-		if enemy_position.distance_to(original_position) > 0.1:
+		if enemy_position.distance_to(original_position) > 0.2:
 			direction = (original_position - enemy_position)
 		else:
 			direction = Vector3.ZERO
@@ -104,7 +103,7 @@ func _on_enemy_hit_box_body_exited(body):
 func hit(dir, attack_damage, knockback):
 	print(name + " got hit")
 	#$Ghol_Ground1_2/Armature/Skeleton3D/Ghool_P.material.albedo_color = Color(1.0, 0.0, 0.0)
-	color_timer.start(hit_color_time)
+	got_hit_timer.start(got_hit_time)
 	if velocity != Vector3.ZERO:
 		velocity += Vector3(1,0,1) * dir * knockback
 	else:
