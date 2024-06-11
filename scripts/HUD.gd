@@ -2,6 +2,8 @@ extends Node2D
 
 var coins_collected: int = 0
 var lives: int = 3  # Starting number of lives
+var score: int = 0
+
 @export var max_lives: int = 5  # Maximum number of lives the player can have
 @export var coins_goal = 5
 

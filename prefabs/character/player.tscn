@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wqdnm"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_4kmnv"]
-[ext_resource type="PackedScene" uid="uid://bwto2d3j8bqki" path="res://objects/LizardReference_3.2.glb" id="2_61vqx"]
+[ext_resource type="PackedScene" uid="uid://d2dmwfn2a8c1o" path="res://objects/LizardReference_3.2.glb" id="2_61vqx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7iyax"]
 radius = 0.286854
