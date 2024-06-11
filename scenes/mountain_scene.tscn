@@ -187,7 +187,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.08165e-12)
 shape = SubResource("BoxShape3D_0g58j")
 
 [node name="GhoulEnemy" parent="GhoulArea3D" instance=ExtResource("9_s0van")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 2.08165e-12)
 player_path = NodePath("../../Player")
 
 [connection signal="coin_collected" from="Coins/Coin1" to="HUD" method="_on_coin_coin_collected"]

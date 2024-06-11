@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://siaojteegwfd"]
 
 [ext_resource type="Script" path="res://scripts/npc/enemy.gd" id="1_d776h"]
-[ext_resource type="PackedScene" uid="uid://pfmf0aovgk7w" path="res://objects/Ghol_Ground1.2.glb" id="2_4kn6m"]
+[ext_resource type="PackedScene" uid="uid://xgg2mwx31fv4" path="res://objects/Ghol_Ground1.2.glb" id="2_4kn6m"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ndb7x"]
 height = 0.5
-radius = 0.394552
+radius = 0.4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ad0rp"]
 radius = 0.308428
@@ -24,7 +24,7 @@ bones/2/rotation = Quaternion(0.00555991, -0.00722362, 0.029593, 0.99952)
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117928, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.118, 0.25, 2.08165e-12)
 shape = SubResource("CylinderShape3D_ndb7x")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
