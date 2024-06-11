@@ -15,6 +15,7 @@ func _ready():
 	
 func _process(double):
 	if player.global_transform.origin.y < minimum_y_level:
+		player.hit(Vector3.ZERO)
 		player.global_transform.origin = player_spawn_position
 	
 
