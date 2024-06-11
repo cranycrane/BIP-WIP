@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var lives = 2
-@export var max_speed = 3.0
+@export var max_speed = 1.0
 
 @export var player_path : NodePath
 @export var attack_speed = 2.0
@@ -16,7 +16,7 @@ var player: CharacterBody3D = null
 
 var target_velocity = Vector3.ZERO
 var direction = Vector3.ZERO
-var detected = false
+var detected_player = false
 
 #unused
 #@onready var enemy_area = get_parent() #there may be ebtter ways to access parent
@@ -49,29 +49,39 @@ func _process(delta):
 
 	# Calculate the direction to the player, ignoring the Y axis
 	
-	if detected: #Follow player
+	if detected_player: #Follow player
 		direction = (player_position - enemy_position)
 		#direction.y = 0  #implicit if on same height base
 		direction = direction.normalized()
+		print(direction)
+	else:			 	#Return to original position
+		if not enemy_position == original_position:
+			direction = (original_position - enemy_position)
+		else:
+			direction = Vector3.ZERO
 	
-	if direction == Vector3.ZERO:
-		velocity.x = 0
-		velocity.z = 0  # stop the movement
-	else:
-		velocity.x = direction.x * max_speed
-		velocity.z = direction.z * max_speed
+	velocity.x = direction.x * max_speed
+	velocity.z = direction.z * max_speed
+		
 	move_and_slide()
 	
 func on_player_entered(enemy): #detect if only the specified enemy within the signal works
-	print("player_entered")
+	print("player_entered enemy area")
 	if enemy == self:
-		detected = true
+		detected_player = true
+		
+func on_player_exited(enemy):
+	print("player_exited enemy area")
+	if enemy == self:
+		detected_player = false
+	
 	
 func _hit_finished():
 	if hit_timer.is_stopped():
 		var dir = global_position.direction_to(player.global_position)
 		player.hit(dir)
 		hit_timer.start()
+	
 
 func _on_area_3d_body_entered(body):
 	if body.name == "Player":

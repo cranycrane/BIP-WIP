@@ -14,21 +14,21 @@ nodes = {
 "start_id": "START"
 },
 "1_1": {
-"dialogue": "Hey, Lizard, you better hurry.",
+"dialogue": "Hey, Lizard, you better hurry. The terrorizing Ghous atop the mountain needs to be taken care of.",
 "offset": Vector2(340, 340),
 "options": {
 0: {
 "condition": {},
-"link": &"1_2",
+"link": &"1_5",
 "text": ""
 }
 },
-"size": Vector2(612.362, 376.455),
+"size": Vector2(612.362, 376.454),
 "speaker": "Jake"
 },
 "1_2": {
 "dialogue": "You should know by now, but just in case, don't forget you can Jump (SPACE), and Hit enemies (E).",
-"offset": Vector2(1120, 340),
+"offset": Vector2(1660, 320),
 "options": {
 0: {
 "condition": {},
@@ -36,7 +36,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(498.087, 457.336),
+"size": Vector2(498.088, 457.335),
 "speaker": "Jake"
 },
 "1_3": {
@@ -49,7 +49,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(610.305, 345.95),
+"size": Vector2(610.305, 345.948),
 "speaker": "Jake"
 },
 "1_4": {
@@ -62,12 +62,25 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(495.753, 406.851),
+"size": Vector2(495.754, 406.849),
+"speaker": "Jake"
+},
+"1_5": {
+"dialogue": "Beware of smaller ghouls that await you on the road too.",
+"offset": Vector2(1080, 340),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(398.437, 414.672),
 "speaker": "Jake"
 },
 "4_1": {
 "link": "END",
-"offset": Vector2(1720, 260),
+"offset": Vector2(2400, 280),
 "type": 0,
 "value": "false",
 "variable": "first"

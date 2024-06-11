@@ -5,7 +5,7 @@ const RESET_DELAY = 0.5
 
 # export says we want to use it elsewhere
 @export var max_lives = 3
-@export var max_speed = 5
+@export var max_speed = 2
 
 @export var jump_acceleration = 5
 @export var fall_acceleration = 25
