@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://xgg2mwx31fv4" path="res://objects/Ghol_Ground1.2.glb" id="2_4kn6m"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ndb7x"]
-height = 0.5
-radius = 0.4
+height = 0.8
+radius = 0.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ad0rp"]
 radius = 0.308428
@@ -21,10 +21,10 @@ bones/1/position = Vector3(0.359659, 0.176686, -1.21536e-16)
 bones/2/rotation = Quaternion(0.00555991, -0.00722362, 0.029593, 0.99952)
 
 [node name="Ghool_P" parent="Ghol_Ground1_2/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.118, 0.25, 2.08165e-12)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.1, 0.2, 2.08165e-12)
 shape = SubResource("CylinderShape3D_ndb7x")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
