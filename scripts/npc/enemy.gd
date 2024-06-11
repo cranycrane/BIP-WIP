@@ -11,6 +11,7 @@ extends CharacterBody3D
 @onready var hit_timer = $HitTimer  # Reference to the Timer node
 @onready var color_timer = $ColorTimer
 
+
 var original_position: Vector3
 var player: CharacterBody3D = null
 
@@ -29,6 +30,7 @@ func _ready():
 	player = get_node(player_path)
 	original_position = global_transform.origin
 	hit_timer.wait_time = attack_speed
+	hit_timer.timeout.connect(_hit_finished)
 	add_to_group("enemy")
 
 func _process(delta):
@@ -81,11 +83,16 @@ func _hit_finished():
 		var dir = global_position.direction_to(player.global_position)
 		player.hit(dir)
 		hit_timer.start()
-	
 
 func _on_area_3d_body_entered(body):
 	if body.name == "Player":
+		hit_timer.start()
 		_hit_finished()
+		
+
+func _on_enemy_hit_box_body_exited(body):
+	pass # Replace with function body.
+
 		
 func hit(dir, attack_damage, knockback):
 	print(name + " got hit")
@@ -116,4 +123,9 @@ func move_along_path(delta: float):
 
 
 func _on_ghoul_area_3d_player_entered():
+	pass # Replace with function body.
+
+
+
+func _on_enemy_hit_box_body_entered(body):
 	pass # Replace with function body.

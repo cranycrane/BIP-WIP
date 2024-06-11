@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb344iejpq51u"]
+
+[ext_resource type="PackedScene" uid="uid://pfmf0aovgk7w" path="res://objects/Ghol_Ground1.2.glb" id="1_0oh40"]
+
+[node name="Ghol_Ground1_2" instance=ExtResource("1_0oh40")]
