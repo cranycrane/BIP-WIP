@@ -25,6 +25,10 @@ shapes/overrides/force_lambert_over_burley.mobile=true
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/quality/use_taa=false
+window/quality/use_debanding=false
+window/screen_space_roughness_limiter/enabled=true
 
 [editor]
 
@@ -94,5 +98,3 @@ ui_attack={
 [rendering]
 
 mesh_lod/lod_change/threshold_pixels=0.0
-global_illumination/overrides/force_vertex_shading.mobile=true
-global_illumination/nvidia_disable_threaded_optimization=false

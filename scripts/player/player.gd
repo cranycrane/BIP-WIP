@@ -4,10 +4,11 @@ const HIT_STAGGER = 15
 const RESET_DELAY = 0.5
 
 # export says we want to use it elsewhere
+@export var max_lives = 3
 @export var max_speed = 5
+
 @export var jump_acceleration = 5
 @export var fall_acceleration = 25
-@export var max_lives = 3
 @export var attack_rotate_speed = 5
 @export var attack_damage = 1
 @export var attack_knockback = 10
@@ -20,6 +21,7 @@ const RESET_DELAY = 0.5
 
 var target_velocity = Vector3.ZERO
 var direction = Vector3.ZERO
+
 var is_staggered = false
 var jump_released = true
 var is_attacking = false
@@ -74,15 +76,17 @@ func _physics_process(delta):
 	direction = direction.normalized()
 	if direction != Vector3.ZERO:
 		lizard_model.look_at(lizard_model.global_transform.origin + direction, Vector3.UP)
-
-	velocity.x = direction.x * max_speed
-	velocity.z = direction.z * max_speed
+	
 	# gravity
 	velocity.y -= fall_acceleration * delta
 		
 	if direction == Vector3.ZERO:
 		velocity.x = 0
 		velocity.z = 0  # stop the movement
+	else:
+		velocity.x = direction.x * max_speed
+		velocity.z = direction.z * max_speed
+		
 
 	move_and_slide()	
 
@@ -120,7 +124,6 @@ func _on_player_hit_box_body_entered(body):
 func _on_player_hit_box_body_exited(body):
 	if body.is_in_group("enemy"):
 		enemies_in_range.erase(body)
-
 
 func _on_attack_timer_timeout():
 	print("TIMER TIMEOUT")
