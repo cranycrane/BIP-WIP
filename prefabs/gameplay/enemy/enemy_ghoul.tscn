@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://pfmf0aovgk7w" path="res://objects/Ghol_Ground1.2.glb" id="1_0oh40"]
 
 [node name="Ghol_Ground1_2" instance=ExtResource("1_0oh40")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(-1.43633e-08, -1.43633e-08, -0.707107, 0.707107)

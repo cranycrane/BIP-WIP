@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @onready var hit_timer = $HitTimer  # Reference to the Timer node
 @onready var color_timer = $ColorTimer
+@onready var animation_player = $Ghol_Ground1_2/AnimationPlayer
 
 
 var original_position: Vector3
@@ -38,8 +39,9 @@ func _process(delta):
 	if lives <= 0:
 		# todo play death sound
 		queue_free()
-		
+			
 	direction = Vector3.ZERO
+	
 	
 	if not hit_timer.is_stopped() and color_timer.is_stopped():
 		return
@@ -56,14 +58,20 @@ func _process(delta):
 		#direction.y = 0  #implicit if on same height base
 		direction = direction.normalized()
 		print(direction)
-	else:			 	#Return to original position
-		if not enemy_position == original_position:
+	else:	#Return to original position with small threshold
+		if enemy_position.distance_to(original_position) > 0.1:
 			direction = (original_position - enemy_position)
 		else:
 			direction = Vector3.ZERO
 	
 	velocity.x = direction.x * max_speed
 	velocity.z = direction.z * max_speed
+	
+	if direction != Vector3.ZERO:
+		look_at(global_transform.origin + direction, Vector3.UP)
+		animation_player.play("ArmatureAction") 
+	else:
+		animation_player.stop()
 		
 	move_and_slide()
 	
@@ -93,10 +101,9 @@ func _on_area_3d_body_entered(body):
 func _on_enemy_hit_box_body_exited(body):
 	pass # Replace with function body.
 
-		
 func hit(dir, attack_damage, knockback):
 	print(name + " got hit")
-	$CSGCylinder3D.material.albedo_color = Color(1.0, 0.0, 0.0)
+	#$Ghol_Ground1_2/Armature/Skeleton3D/Ghool_P.material.albedo_color = Color(1.0, 0.0, 0.0)
 	color_timer.start(hit_color_time)
 	if velocity != Vector3.ZERO:
 		velocity += Vector3(1,0,1) * dir * knockback
@@ -105,8 +112,8 @@ func hit(dir, attack_damage, knockback):
 	lives -= attack_damage
 
 func _on_color_timer_timeout():
-	$CSGCylinder3D.material.albedo_color = Color(1.0, 1.0, 1.0) 
-
+	#$Ghol_Ground1_2/Armature/Skeleton3D/Ghool_P.material.albedo_color = Color(1.0, 1.0, 1.0) 
+	pass
 	
 #unused now
 func follow_player():
