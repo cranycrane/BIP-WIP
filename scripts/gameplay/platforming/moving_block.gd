@@ -12,17 +12,16 @@ var player = null
 var original_parent = null
 
 var moving = false
-@onready var allowed = get_node("HUD")
+@onready var hud = get_node("/MountainScene/HUD")
 
 
 func move_block(body):
 	if body.name == "Player":
-		if allowed:
-			moving = true
-			var tween = get_tree().create_tween()
-			if at_start:
-				tween.tween_property(self, "global_position", global_position + vector3, time).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT) #last value are seconds
-				at_start = false
-			else:
-				tween.tween_property(self, "global_position", global_position - vector3, time).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
-				at_start = true
+		moving = true
+		var tween = get_tree().create_tween()
+		if at_start:
+			tween.tween_property(self, "global_position", global_position + vector3, time).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT) #last value are seconds
+			at_start = false
+		else:
+			tween.tween_property(self, "global_position", global_position - vector3, time).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
+			at_start = true

@@ -8,6 +8,7 @@ extends Node3D
 @onready var camera_player = $"../../Player/CameraPivot" #dragged an dropped
 # Signal to connect when the player enters the area
 signal player_entered
+signal dialogue_ended
 
 # Variable to keep track of the player inside the area
 var player_in_area = null
@@ -40,3 +41,7 @@ func start_dialogue():
 	print("Dialogue started")
 	camera_player.cameraTransitionAnimation
 	dialogue_box.start('START')
+
+
+func _on_dialogue_box_dialogue_ended():
+	emit_signal("dialogue_ended")

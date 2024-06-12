@@ -1,0 +1,150 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0w7vejk4uogv"]
+
+[ext_resource type="Script" path="res://pay_to_pass.gd" id="1_eomu2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y7iyw"]
+height = 1.0
+radius = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_on1ey"]
+bg_color = Color(0.282353, 0.282353, 0.282353, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_4pwx8"]
+font_size = 54
+
+[node name="PayToPass" type="Node3D"]
+script = ExtResource("1_eomu2")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
+shape = SubResource("CylinderShape3D_y7iyw")
+
+[node name="InteractHint" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Pay" type="Panel" parent="InteractHint"]
+visible = false
+self_modulate = Color(0.0784314, 0.0784314, 0.0784314, 0.588235)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -220.0
+offset_right = 50.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_on1ey")
+
+[node name="Label" type="Label" parent="InteractHint/Pay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -37.0
+offset_right = 20.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "P"
+label_settings = SubResource("LabelSettings_4pwx8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoCoins" type="Panel" parent="InteractHint"]
+visible = false
+self_modulate = Color(0.0784314, 0.0784314, 0.0784314, 0.588235)
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -220.0
+offset_right = 50.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_on1ey")
+
+[node name="Label" type="Label" parent="InteractHint/NoCoins"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -37.0
+offset_right = 20.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Not enough coins to pass"
+label_settings = SubResource("LabelSettings_4pwx8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Payed" type="Panel" parent="InteractHint"]
+visible = false
+self_modulate = Color(0.0784314, 0.0784314, 0.0784314, 0.588235)
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -220.0
+offset_right = 50.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_on1ey")
+
+[node name="Label" type="Label" parent="InteractHint/Payed"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -37.0
+offset_right = 20.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Now you can pass"
+label_settings = SubResource("LabelSettings_4pwx8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
