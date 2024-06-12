@@ -16,3 +16,6 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.name == "Player" and get_node_or_null(enemy_path):
 		enemy.on_player_exited(enemy)
+	
+	if body.is_in_group("enemy") and get_node_or_null(enemy_path):
+		enemy.lives = 0

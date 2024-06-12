@@ -89,8 +89,6 @@ func _on_area_3d_body_entered(body):
 		hit_timer.start()
 		_hit_finished()
 
-func _on_enemy_hit_box_body_exited(body):
-	pass # Replace with function body.
 
 func hit(dir, attack_damage, knockback):
 	print(name + " got hit")
@@ -105,10 +103,3 @@ func _on_color_timer_timeout():
 	#$Ghol_Ground1_2/Armature/Skeleton3D/Ghool_P.material.albedo_color = Color(1.0, 1.0, 1.0) 
 	pass
 	
-func _on_ghoul_area_3d_player_entered():
-	pass # Replace with function body.
-
-
-
-func _on_enemy_hit_box_body_entered(body):
-	pass # Replace with function body.

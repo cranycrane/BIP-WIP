@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/npc/enemy.gd" id="1_p4ycf"]
 [ext_resource type="Script" path="res://scripts/npc/shootingEnemy.gd" id="1_vnkjb"]
-[ext_resource type="PackedScene" uid="uid://cndltufurcpl6" path="res://objects/Ghol_Float1.2.glb" id="2_64jh2"]
+[ext_resource type="PackedScene" uid="uid://dme6ahnwpbooo" path="res://objects/Ghol_Float1.2.glb" id="2_64jh2"]
 [ext_resource type="PackedScene" uid="uid://cfq0aps387o0v" path="res://prefabs/gameplay/projectile.tscn" id="4_l4hya"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_43t56"]
