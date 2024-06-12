@@ -26,7 +26,7 @@ func _shoot_at_player(shoot_direction):
 	shoot_timer.start()
 	var spawn_position = projectile_spawn.global_transform.origin
 	var bullet = projectile_scene.instantiate()
-	get_parent().add_child(bullet)
+	get_parent().get_parent().add_child(bullet)
 	bullet.speed = projectile_speed
 	bullet.global_transform.origin = spawn_position
 	bullet.direction = player_node.global_position - bullet.global_transform.origin

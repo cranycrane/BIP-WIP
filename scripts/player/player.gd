@@ -79,7 +79,7 @@ func _physics_process(delta):
 	
 	# gravity
 	velocity.y -= fall_acceleration * delta
-		
+
 	if direction == Vector3.ZERO:
 		velocity.x = 0
 		velocity.z = 0  # stop the movement
@@ -87,7 +87,6 @@ func _physics_process(delta):
 		velocity.x = direction.x * max_speed
 		velocity.z = direction.z * max_speed
 		
-
 	move_and_slide()	
 
 func attack():
@@ -96,8 +95,6 @@ func attack():
 		enemy.hit(direction, attack_damage, attack_knockback)
 		
 func hit(dir):
-	print("GETTING HIT")
-	return
 	# decrease health
 	current_lives -= 1
 	emit_signal("player_hit", current_lives)
