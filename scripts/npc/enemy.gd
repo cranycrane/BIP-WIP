@@ -6,11 +6,11 @@ extends CharacterBody3D
 @export var player_path : NodePath
 @export var attack_speed = 2.0
 @export var got_hit_time = 0.5
+@export var animation_player : AnimationPlayer
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var hit_timer = $HitTimer  # Reference to the Timer node
 @onready var got_hit_timer = $GotHitTimer
-@onready var animation_player = $Ghol_Ground1_2/AnimationPlayer
 
 
 var original_position: Vector3

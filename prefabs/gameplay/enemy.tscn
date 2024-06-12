@@ -11,8 +11,9 @@ radius = 0.65
 radius = 0.308428
 height = 1.02295
 
-[node name="GhoulEnemy" type="CharacterBody3D" groups=["enemy"]]
+[node name="GhoulEnemy" type="CharacterBody3D" node_paths=PackedStringArray("animation_player") groups=["enemy"]]
 script = ExtResource("1_d776h")
+animation_player = NodePath("Ghol_Ground1_2/AnimationPlayer")
 
 [node name="Ghol_Ground1_2" parent="." instance=ExtResource("2_4kn6m")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
