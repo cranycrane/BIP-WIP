@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cp00cwi43lk6s" path="res://prefabs/gameplay/dialogue.tscn" id="12_n62pd"]
 [ext_resource type="PackedScene" uid="uid://clgxhft785fmd" path="res://geometry/world/Mountain0.99.glb" id="16_2f4we"]
 [ext_resource type="Resource" uid="uid://djg5jbbp2gfi1" path="res://dialogues/welcome_dialogue.tres" id="16_voy1x"]
+[ext_resource type="Resource" uid="uid://6ocx4qo471lr" path="res://dialogues/blocker_dialogue.tres" id="17_0faqk"]
 [ext_resource type="PackedScene" uid="uid://w8yj55h561uw" path="res://prefabs/gameplay/enemy/ghoul_area_3d.tscn" id="17_2s7un"]
 [ext_resource type="Script" path="res://scripts/npc/ghoul_area.gd" id="17_toggp"]
 
@@ -39,9 +40,6 @@ glow_map_strength = 0.0
 volumetric_fog_density = 0.0116
 adjustment_contrast = 1.58
 adjustment_saturation = 8.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_konf3"]
-size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0g58j"]
 size = Vector3(3, 1, 2)
@@ -157,10 +155,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.1633e-12, 1.5)
 [node name="LabelText" parent="NPC" instance=ExtResource("11_md167")]
 player = NodePath("../../Player")
 
-[node name="BlockedAreaCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, -1.5)
-shape = SubResource("BoxShape3D_konf3")
-
 [node name="Mountain0_99" parent="." instance=ExtResource("16_2f4we")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08165e-12, 0)
 
@@ -178,30 +172,50 @@ transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e
 max_speed = 0.6
 player_path = NodePath("../../Player")
 
-[node name="NPCWelcome" parent="." instance=ExtResource("10_d6bax")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 6.5)
-
-[node name="dialogueWelcome" parent="NPCWelcome" instance=ExtResource("12_n62pd")]
-dialogue_path = ExtResource("16_voy1x")
-
-[node name="NPCWelcome2" parent="." instance=ExtResource("10_d6bax")]
+[node name="NPCBlocking" parent="." instance=ExtResource("10_d6bax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -1.5)
 
-[node name="dialogueWelcome" parent="NPCWelcome2" instance=ExtResource("12_n62pd")]
-dialogue_path = ExtResource("16_voy1x")
+[node name="dialogueBlocking" parent="NPCBlocking" instance=ExtResource("12_n62pd")]
+dialogue_path = ExtResource("17_0faqk")
 
-[node name="BlockingCollisionShape3D" type="CollisionShape3D" parent="NPCWelcome2"]
+[node name="BlockingCollisionShape3D" type="CollisionShape3D" parent="NPCBlocking"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
 shape = SubResource("BoxShape3D_ojtgj")
 
-[node name="GhoulArea2" parent="." instance=ExtResource("17_2s7un")]
+[node name="GhoulAreaBoss" parent="." instance=ExtResource("17_2s7un")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 8.8, 6, -10.5)
+enemy_path = NodePath("GhoulEnemyBoss")
+
+[node name="GhoulEnemyBoss" parent="GhoulAreaBoss" instance=ExtResource("9_s0van")]
+transform = Transform3D(-1.5, 5.2318e-16, -1.31134e-07, 5.2318e-16, 1.5, -5.2318e-16, 1.31134e-07, -5.2318e-16, -1.5, -0.2, 0, 0)
+max_speed = 0.6
+player_path = NodePath("../../Player")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[node name="NPCWelcome" parent="Node3D" instance=ExtResource("10_d6bax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -2.08165e-12, 6.5)
+
+[node name="dialogueWelcome" parent="Node3D/NPCWelcome" instance=ExtResource("12_n62pd")]
+dialogue_path = ExtResource("16_voy1x")
+
+[node name="GhoulArea2" parent="Node3D" instance=ExtResource("17_2s7un")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 2, -1)
 enemy_path = NodePath("GhoulEnemy2")
 
-[node name="GhoulEnemy2" parent="GhoulArea2" instance=ExtResource("9_s0van")]
+[node name="GhoulEnemy2" parent="Node3D/GhoulArea2" instance=ExtResource("9_s0van")]
 transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, -0.5, 0, 0)
 max_speed = 0.6
-player_path = NodePath("../../Player")
+player_path = NodePath("../../../Player")
+
+[node name="GhoulArea3" parent="Node3D" instance=ExtResource("17_2s7un")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -2.08165e-12, 7)
+enemy_path = NodePath("GhoulEnemy3")
+
+[node name="GhoulEnemy3" parent="Node3D/GhoulArea3" instance=ExtResource("9_s0van")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -0.5, 0, -0.5)
+player_path = NodePath("../../../Player")
 
 [connection signal="coin_collected" from="Coins/Coin1" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin2" to="HUD" method="_on_coin_coin_collected"]

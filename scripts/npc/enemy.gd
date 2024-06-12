@@ -11,7 +11,7 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @onready var hit_timer = $HitTimer  # Reference to the Timer node
 @onready var got_hit_timer = $GotHitTimer
-
+@export var knockback: float
 
 var original_position: Vector3
 var player: CharacterBody3D = null
@@ -42,7 +42,7 @@ func _process(delta):
 	
 	var player_position = player.global_position
 	var enemy_position = global_position
-
+	
 	# Calculate the direction to the player, ignoring the Y axis
 	if hit_timer.is_stopped() and got_hit_timer.is_stopped():
 		direction = Vector3.ZERO
