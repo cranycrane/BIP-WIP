@@ -167,13 +167,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08165e-12, 0)
 [node name="GhoulArea1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2.5, 0)
 script = ExtResource("17_toggp")
-enemy_path = NodePath("GhoulEnemy")
+enemy_path = NodePath("GhoulEnemy1")
 
-[node name="GhoulCollisionShape3D" type="CollisionShape3D" parent="GhoulArea1"]
+[node name="GhoulAreaShape1" type="CollisionShape3D" parent="GhoulArea1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.08165e-12)
 shape = SubResource("BoxShape3D_0g58j")
 
-[node name="GhoulEnemy" parent="GhoulArea1" instance=ExtResource("9_s0van")]
+[node name="GhoulEnemy1" parent="GhoulArea1" instance=ExtResource("9_s0van")]
 transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 2.08165e-12, -0.5, 2.08165e-12)
 max_speed = 0.6
 player_path = NodePath("../../Player")
@@ -191,25 +191,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -1.5)
 dialogue_path = ExtResource("16_voy1x")
 
 [node name="BlockingCollisionShape3D" type="CollisionShape3D" parent="NPCWelcome2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
 shape = SubResource("BoxShape3D_ojtgj")
 
 [node name="GhoulArea2" parent="." instance=ExtResource("17_2s7un")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 2, -1)
-enemy_path = NodePath("GhoulEnemy")
+enemy_path = NodePath("GhoulEnemy2")
 
-[node name="GhoulEnemy" parent="GhoulArea2" instance=ExtResource("9_s0van")]
-transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, -0.5)
+[node name="GhoulEnemy2" parent="GhoulArea2" instance=ExtResource("9_s0van")]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, -0.5, 0, 0)
+max_speed = 0.6
 player_path = NodePath("../../Player")
-
-[node name="GhoulAreaBoss" parent="." instance=ExtResource("17_2s7un")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, -10)
-enemy_path = NodePath("GhoulEnemy")
-
-[node name="GhoulEnemy" parent="GhoulAreaBoss" node_paths=PackedStringArray("animation_player") instance=ExtResource("9_s0van")]
-transform = Transform3D(-1, 3.48787e-16, -1.50996e-07, 3.48787e-16, 1, -3.48787e-16, 1.50996e-07, -3.48787e-16, -1, 0, 0, -0.5)
-player_path = NodePath("../../Player")
-animation_player = NodePath("../../GhoulArea2/GhoulEnemy/Ghol_Ground1_2/AnimationPlayer")
 
 [connection signal="coin_collected" from="Coins/Coin1" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin2" to="HUD" method="_on_coin_coin_collected"]
@@ -229,7 +221,7 @@ animation_player = NodePath("../../GhoulArea2/GhoulEnemy/Ghol_Ground1_2/Animatio
 [connection signal="body_entered" from="MovingBlock/PressurePlate" to="MovingBlock" method="move_block"]
 [connection signal="body_entered" from="GhoulArea1" to="GhoulArea1" method="_on_body_entered"]
 [connection signal="body_exited" from="GhoulArea1" to="GhoulArea1" method="_on_body_exited"]
-[connection signal="player_entered" from="GhoulArea1" to="GhoulArea1/GhoulEnemy" method="on_player_entered"]
-[connection signal="player_exited" from="GhoulArea1" to="GhoulArea1/GhoulEnemy" method="on_player_exited"]
+[connection signal="player_entered" from="GhoulArea1" to="GhoulArea1/GhoulEnemy1" method="on_player_entered"]
+[connection signal="player_exited" from="GhoulArea1" to="GhoulArea1/GhoulEnemy1" method="on_player_exited"]
 
 [editable path="Player"]
