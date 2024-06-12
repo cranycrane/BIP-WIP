@@ -15,5 +15,5 @@ func _on_body_entered(body):
 		enemy.on_player_entered(enemy)
 
 func _on_body_exited(body):
-	if body.name == "Player":
+	if body.name == "Player" and get_node_or_null(enemy_path):
 		enemy.on_player_exited(enemy)
