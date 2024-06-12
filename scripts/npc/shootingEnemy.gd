@@ -12,12 +12,11 @@ var player_in_area = false
 
 func _ready():
 	shoot_timer.wait_time = shoot_interval
-	
+
 func _process(delta):
 	if player_in_area:
-		var target_position = player_node.global_transform.origin
-		target_position.y = 0
-		$"..".look_at(target_position, Vector3.UP)
+		var target_location = player_node.global_transform.origin
+		$"..".look_at(target_location, Vector3.UP)
 		
 	if player_in_area and shoot_timer.is_stopped():
 		print("SHOOTING")

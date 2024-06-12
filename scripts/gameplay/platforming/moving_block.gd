@@ -11,12 +11,13 @@ var at_start = true
 var player = null
 var original_parent = null
 
+var moving = false
+
+
+
 func move_block(body):
-	if body.name == "Player" and not player:
-		player = body
-		original_parent = player.get_parent()
-		player.get_parent().remove_child(player)
-		add_child(player)
+	if body.name == "Player":
+		moving = true
 		var tween = get_tree().create_tween()
 		if at_start:
 			tween.tween_property(self, "global_position", global_position + vector3, time).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT) #last value are seconds
@@ -24,16 +25,3 @@ func move_block(body):
 		else:
 			tween.tween_property(self, "global_position", global_position - vector3, time).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
 			at_start = true
-
-
-func _on_body_exited(body):
-	if body.name == "Player" and player:
-		if original_parent != null:
-			call_deferred("_reparent_player", original_parent)
-			player = null
-
-func _reparent_player(parent_node):
-	if player and parent_node:
-		remove_child(player)
-		#player.position += position  # Adjust position back to the original
-		parent_node.add_child(player)

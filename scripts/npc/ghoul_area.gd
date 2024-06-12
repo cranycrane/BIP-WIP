@@ -10,8 +10,7 @@ func _ready():
 	enemy = get_node(enemy_path)
 
 func _on_body_entered(body):
-	if body.name == "Player":
-		print("PLAYER ENTERED")
+	if body.name == "Player" and get_node_or_null(enemy_path):
 		enemy.on_player_entered(enemy)
 
 func _on_body_exited(body):
