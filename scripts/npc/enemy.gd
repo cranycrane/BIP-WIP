@@ -47,12 +47,12 @@ func _process(delta):
 	if hit_timer.is_stopped() and got_hit_timer.is_stopped():
 		direction = Vector3.ZERO
 		if detected_player: #Follow player
-			direction = (player_position - enemy_position)
+			direction = (player_position - enemy_position).normalized()
 			direction.y = 0  #implicit if on same height base
 			direction = direction.normalized()
 		else:	#Return to original position with small threshold
 			if enemy_position.distance_to(original_position) > 0.2:
-				direction = (original_position - enemy_position)
+				direction = (original_position - enemy_position).normalized()
 				direction.y = 0
 			else:
 				direction = Vector3.ZERO
