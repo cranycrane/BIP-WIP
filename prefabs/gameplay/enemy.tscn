@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://siaojteegwfd"]
 
 [ext_resource type="Script" path="res://scripts/npc/enemy.gd" id="1_d776h"]
-[ext_resource type="PackedScene" uid="uid://pfmf0aovgk7w" path="res://objects/Ghol_Ground1.2.glb" id="2_4kn6m"]
+[ext_resource type="PackedScene" uid="uid://xgg2mwx31fv4" path="res://objects/Ghol_Ground1.2.glb" id="2_4kn6m"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ndb7x"]
 height = 0.8
