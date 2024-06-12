@@ -38,7 +38,7 @@ func _process(delta):
 		# todo play death sound
 		queue_free()
 		
-	var distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
+	#var distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
 	
 	var player_position = player.global_position
 	var enemy_position = global_position

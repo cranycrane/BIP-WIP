@@ -89,6 +89,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_n0b5l")
 script = ExtResource("1_niad8")
 sample_portrait = null
 scroll_speed = 3
+skip_input_action = "ui_accept"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_erskn"), SubResource("RichTextEffect_rbq6v"), SubResource("RichTextEffect_y8y1c")])
 
 [node name="InteractHint" type="Control" parent="."]

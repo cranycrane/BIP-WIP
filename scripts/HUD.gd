@@ -12,6 +12,8 @@ var score: int = 0
 @onready var completed_screen = $CanvasLayer/CompletedScreen
 
 var moving_block_allowed = false
+var allowed_pasage = false
+var allowed_moving_block = false
 
 func update_lives_display(current_lives):
 	if current_lives <= 0:

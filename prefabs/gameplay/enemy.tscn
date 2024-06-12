@@ -29,9 +29,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.08165e-12, 2.08165e-1
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0.09)
 shape = SubResource("CylinderShape3D_ndb7x")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_height_offset = 0.15
-
 [node name="HitTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
