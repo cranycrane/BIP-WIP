@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://6ocx4qo471lr"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_4oyft"]
+
+[resource]
+script = ExtResource("1_4oyft")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"5_1",
+"offset": Vector2(-600, 200),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "I am not letting you in unless you pay me....",
+"offset": Vector2(260, 200),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(531.737, 439.659),
+"speaker": "Blocko"
+},
+"1_2": {
+"dialogue": "..6 coins.",
+"offset": Vector2(1000, 200),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(558.402, 420.693),
+"speaker": "Blocko"
+},
+"5_1": {
+"false": &"1_1",
+"offset": Vector2(-220, 200),
+"operator": 0,
+"true": &"1_1",
+"value1": "{{first}}",
+"value2": ""
+}
+}
+variables = {
+"first": {
+"type": 1,
+"value": true
+}
+}
+strays = Array[String]([])
+characters = ""

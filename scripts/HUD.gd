@@ -4,13 +4,14 @@ var coins_collected: int = 0
 var lives: int = 3  # Starting number of lives
 var score: int = 0
 
-@export var max_lives: int = 5  # Maximum number of lives the player can have
-@export var coins_goal = 5
+@export var max_lives: int = 5  # Maximum number of lives the player can have'
 
 @onready var heart_container = $CanvasLayer/HeartContainer
 @onready var coin_container = $CanvasLayer/CoinContainer
 @onready var death_screen = $DeathScreen
 @onready var completed_screen = $CanvasLayer/CompletedScreen
+
+var moving_block_allowed = false
 
 func update_lives_display(current_lives):
 	if current_lives <= 0:
@@ -55,13 +56,7 @@ func _on_restart_button_pressed():
 
 func _on_coin_coin_collected():
 	coins_collected += 1
-	#$Coin
 	update_scores_display()
-
-	if coins_collected == coins_goal:
-		await get_tree().create_timer(2.0).timeout
-		show_completed_screen()
-	return
 
 func show_completed_screen():
 	completed_screen.show()

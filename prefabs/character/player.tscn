@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://d2dmwfn2a8c1o" path="res://objects/LizardReference_3.2.glb" id="2_61vqx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7iyax"]
-radius = 0.286854
-height = 0.995721
+radius = 0.28
+height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp0uy"]
 radius = 0.505772

@@ -23,7 +23,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(612.362, 376.454),
+"size": Vector2(612.361, 376.453),
 "speaker": "Jake"
 },
 "1_2": {
@@ -36,7 +36,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(498.088, 457.335),
+"size": Vector2(498.088, 457.334),
 "speaker": "Jake"
 },
 "1_3": {
@@ -49,7 +49,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(610.305, 345.948),
+"size": Vector2(610.304, 345.948),
 "speaker": "Jake"
 },
 "1_4": {
@@ -62,7 +62,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(495.754, 406.849),
+"size": Vector2(495.752, 406.849),
 "speaker": "Jake"
 },
 "1_5": {
