@@ -17,6 +17,8 @@ config/icon="res://icon.svg"
 
 [debug]
 
+shapes/collision/shape_color=Color(0.886275, 0, 0.243137, 0.980392)
+shapes/collision/contact_color=Color(0.752941, 0, 0.12549, 0.8)
 shapes/nvidia_disable_threaded_optimization=true
 shapes/overrides/force_vertex_shading.mobile=true
 shapes/overrides/force_lambert_over_burley.mobile=true

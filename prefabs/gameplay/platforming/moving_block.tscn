@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bn05oc16bv8kd"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/platforming/moving_block.gd" id="1_hbjn5"]
-[ext_resource type="PackedScene" uid="uid://cso01pkkhrdlj" path="res://geometry/block/MovingBlock_2.4.glb" id="2_yyc8r"]
+[ext_resource type="PackedScene" uid="uid://d0eagldsh5xe3" path="res://geometry/block/MovingBlock_2.4.glb" id="2_yyc8r"]
 
 [node name="CharacterBody3D" type="AnimatableBody3D"]
 script = ExtResource("1_hbjn5")
