@@ -32,11 +32,24 @@ nodes = {
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_3",
 "text": ""
 }
 },
 "size": Vector2(558.402, 420.693),
+"speaker": "Blocko"
+},
+"1_3": {
+"dialogue": "Oh and also you gotta be prepared so take the heart on the island. I will help move the ground with my super powers. Once you pay me ofc",
+"offset": Vector2(1800, 180),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(550, 431.5),
 "speaker": "Blocko"
 },
 "5_1": {
