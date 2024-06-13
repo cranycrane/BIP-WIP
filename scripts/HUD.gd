@@ -11,7 +11,6 @@ var score: int = 0
 @onready var death_screen = $DeathScreen
 @onready var completed_screen = $CanvasLayer/CompletedScreen
 
-var moving_block_allowed = false
 var allowed_pasage = false
 var allowed_moving_block = false
 

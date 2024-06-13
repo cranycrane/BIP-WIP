@@ -40,8 +40,21 @@ nodes = {
 "speaker": "Blocko"
 },
 "1_3": {
-"dialogue": "Oh and also you gotta be prepared so take the heart on the island. I will help move the ground with my super powers. Once you pay me ofc",
+"dialogue": "Oh and also you gotta be prepared so take the heart on the island.",
 "offset": Vector2(1800, 180),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(550.001, 431.5),
+"speaker": "Blocko"
+},
+"1_4": {
+"dialogue": "I will help move the ground with my super powers. Once you pay me of course.",
+"offset": Vector2(2569.49, 188.101),
 "options": {
 0: {
 "condition": {},
@@ -49,7 +62,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(550, 431.5),
+"size": Vector2(570.507, 422.401),
 "speaker": "Blocko"
 },
 "5_1": {
