@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_wqdnm"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_4kmnv"]
-[ext_resource type="PackedScene" uid="uid://d2dmwfn2a8c1o" path="res://objects/LizardReference_3.2.glb" id="2_61vqx"]
+[ext_resource type="PackedScene" uid="uid://6w6qrdrnycea" path="res://objects/Lizard_HighP_4.5.glb" id="2_l84lq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7iyax"]
 radius = 0.28
@@ -13,6 +13,7 @@ radius = 0.505772
 height = 1.08067
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_layer = 3
 script = ExtResource("1_wqdnm")
 
@@ -20,7 +21,8 @@ script = ExtResource("1_wqdnm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
 shape = SubResource("CapsuleShape3D_7iyax")
 
-[node name="Lizard" parent="." instance=ExtResource("2_61vqx")]
+[node name="Lizard" parent="." instance=ExtResource("2_l84lq")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
@@ -45,3 +47,5 @@ one_shot = true
 [connection signal="body_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="PlayerHitBox" to="." method="_on_player_hit_box_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+
+[editable path="Lizard"]

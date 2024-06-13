@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/npc/enemy.gd" id="1_p4ycf"]
 [ext_resource type="Script" path="res://scripts/npc/shootingEnemy.gd" id="1_vnkjb"]
-[ext_resource type="PackedScene" uid="uid://dme6ahnwpbooo" path="res://objects/Ghol_Float1.2.glb" id="2_64jh2"]
+[ext_resource type="PackedScene" uid="uid://cndltufurcpl6" path="res://objects/Ghol_Float1.2.glb" id="2_64jh2"]
 [ext_resource type="PackedScene" uid="uid://cfq0aps387o0v" path="res://prefabs/gameplay/projectile.tscn" id="4_l4hya"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_43t56"]
@@ -16,12 +16,12 @@ radius = 3.0
 [node name="ShootingEnemy" type="CharacterBody3D" node_paths=PackedStringArray("animation_player") groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_p4ycf")
-animation_player = NodePath("Ghol_Float1_2/AnimationPlayer")
+animation_player = NodePath("Ghol/AnimationPlayer")
 
-[node name="Ghol_Float1_2" parent="." instance=ExtResource("2_64jh2")]
+[node name="Ghol" parent="." instance=ExtResource("2_64jh2")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Ghol_Float1_2/Armature" index="0"]
+[node name="Skeleton3D" parent="Ghol/Armature" index="0"]
 bones/1/position = Vector3(1.18424e-08, 1.26745, -1.39932e-09)
 bones/1/rotation = Quaternion(0.708273, -0.00260418, -0.705867, -0.00971868)
 bones/2/position = Vector3(3.14783e-09, 0.279682, -2.4121e-08)
@@ -62,4 +62,4 @@ one_shot = true
 [connection signal="body_exited" from="Shooting" to="Shooting" method="_on_body_exited"]
 [connection signal="timeout" from="Shooting/ShootTimer" to="." method="_on_shoot_timer_timeout"]
 
-[editable path="Ghol_Float1_2"]
+[editable path="Ghol"]

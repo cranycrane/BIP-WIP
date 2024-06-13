@@ -1,28 +1,28 @@
 [gd_scene load_steps=5 format=3 uid="uid://siaojteegwfd"]
 
 [ext_resource type="Script" path="res://scripts/npc/enemy.gd" id="1_d776h"]
-[ext_resource type="PackedScene" uid="uid://xgg2mwx31fv4" path="res://objects/Ghol_Ground1.2.glb" id="2_4kn6m"]
+[ext_resource type="PackedScene" uid="uid://pfmf0aovgk7w" path="res://objects/Ghol_Ground1.2.glb" id="2_4kn6m"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ndb7x"]
 height = 0.8
 radius = 0.65
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ad0rp"]
-radius = 0.308428
+radius = 0.389456
 height = 1.02295
 
 [node name="GhoulEnemy" type="CharacterBody3D" node_paths=PackedStringArray("animation_player") groups=["enemy"]]
 script = ExtResource("1_d776h")
-animation_player = NodePath("Ghol_Ground1_2/AnimationPlayer")
+animation_player = NodePath("Ghol/AnimationPlayer")
 
-[node name="Ghol_Ground1_2" parent="." instance=ExtResource("2_4kn6m")]
+[node name="Ghol" parent="." instance=ExtResource("2_4kn6m")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Ghol_Ground1_2/Armature" index="0"]
+[node name="Skeleton3D" parent="Ghol/Armature" index="0"]
 bones/1/position = Vector3(0.359659, 0.176686, -1.21536e-16)
 bones/2/rotation = Quaternion(0.00555991, -0.00722362, 0.029593, 0.99952)
 
-[node name="Ghool_P" parent="Ghol_Ground1_2/Armature/Skeleton3D" index="0"]
+[node name="Ghool_P" parent="Ghol/Armature/Skeleton3D" index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -34,9 +34,9 @@ wait_time = 2.0
 one_shot = true
 
 [node name="EnemyHitBox" type="Area3D" parent="."]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.108406)
 shape = SubResource("CapsuleShape3D_ad0rp")
 
 [node name="GotHitTimer" type="Timer" parent="."]
@@ -46,4 +46,4 @@ one_shot = true
 [connection signal="body_exited" from="EnemyHitBox" to="." method="_on_enemy_hit_box_body_exited"]
 [connection signal="timeout" from="GotHitTimer" to="." method="_on_color_timer_timeout"]
 
-[editable path="Ghol_Ground1_2"]
+[editable path="Ghol"]

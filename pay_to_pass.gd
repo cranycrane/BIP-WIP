@@ -2,6 +2,7 @@ extends Node3D
 
 @export var coins_to_pay = 1
 @export var hud_path : NodePath
+@export var remove_object_path : NodePath
 
 @onready var pay_hint = $InteractHint/Pay
 @onready var no_coins_hint = $InteractHint/NoCoins
@@ -10,8 +11,10 @@ extends Node3D
 var player_in_area = false
 var hud = null
 var can_show = false
+var remove_object = null
 
 func _ready():
+	remove_object = get_node(remove_object_path)
 	hud = get_node(hud_path)
 
 func _process(delta):
@@ -20,6 +23,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_pay"):
 			payed_hint.visible = true
 			hud.allowed_pasage = true
+			remove_object.queue_free()
 
 	elif player_in_area and can_show:
 		no_coins_hint.visible = true

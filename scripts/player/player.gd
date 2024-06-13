@@ -18,6 +18,7 @@ const RESET_DELAY = 0.5
 @onready var current_lives: int = max_lives
 @onready var lizard_model = $Lizard
 @onready var attack_timer = $AttackTimer
+@onready var animation_player = $Lizard/AnimationPlayer
 
 var target_velocity = Vector3.ZERO
 var direction = Vector3.ZERO
@@ -64,7 +65,7 @@ func _physics_process(delta):
 			
 		if Input.is_action_pressed("ui_attack") and attack_timer.is_stopped() and not is_attacking:
 			is_attacking = true
-			print("ATTACKING")
+			print("ATTACKING LEN: " + str(len(enemies_in_range)))
 			if len(enemies_in_range) > 0:
 				print("DEALING DAMAGE TO ENEMY")
 				attack()
@@ -76,7 +77,9 @@ func _physics_process(delta):
 	direction = direction.normalized()
 	if direction != Vector3.ZERO:
 		lizard_model.look_at(lizard_model.global_transform.origin + direction, Vector3.UP)
-	
+		animation_player.play("ArmatureAction") 
+	else:
+		animation_player.stop()
 	# gravity
 	velocity.y -= fall_acceleration * delta
 

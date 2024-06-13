@@ -1,10 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcgx7pq0b3mj5"]
 
 [ext_resource type="Script" path="res://scripts/npc/npc.gd" id="1_a28ik"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_tydvk"]
-radius = 0.25
-height = 1.0
+[ext_resource type="PackedScene" uid="uid://dmgcjmixfisrl" path="res://objects/Lizard_HighP_BLUE.glb" id="2_fggmc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7am36"]
 radius = 0.28
@@ -13,9 +10,8 @@ height = 1.0
 [node name="NPC" type="CharacterBody3D"]
 script = ExtResource("1_a28ik")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
-mesh = SubResource("CapsuleMesh_tydvk")
+[node name="Lizard_HighP_BLUE" parent="." instance=ExtResource("2_fggmc")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)

@@ -1,6 +1,7 @@
 extends Node2D
 
 var coins_collected: int = 0
+var curr_lives = 0
 var lives: int = 3  # Starting number of lives
 var score: int = 0
 
@@ -15,6 +16,7 @@ var allowed_pasage = false
 var allowed_moving_block = false
 
 func update_lives_display(current_lives):
+	curr_lives = current_lives
 	if current_lives <= 0:
 		show_death_screen()
 		return
@@ -48,6 +50,7 @@ func update_scores_display():
 
 func show_death_screen():
 	death_screen.show()
+	$DeathScreen/DeathScreen/VBoxContainer/Score.text = "Score: " + str((coins_collected + curr_lives)) 
 	get_tree().paused = true
 
 func _on_restart_button_pressed():
@@ -61,8 +64,14 @@ func _on_coin_coin_collected():
 
 func show_completed_screen():
 	completed_screen.show()
+	$CanvasLayer/CompletedScreen/VBoxContainer/Score.text = "Score: " + str((coins_collected + curr_lives)) 
 	get_tree().paused = true
 
 func _on_exit_button_pressed():
 	get_tree().quit()
 
+
+
+func _on_heart_heart_collected():
+	curr_lives += 1
+	update_lives_display(curr_lives)
