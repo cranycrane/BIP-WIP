@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://boyhdxs14agwg"]
+[gd_scene load_steps=27 format=3 uid="uid://boyhdxs14agwg"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/world.gd" id="1_m0ib1"]
 [ext_resource type="PackedScene" uid="uid://bnnh20ail45mt" path="res://prefabs/character/player.tscn" id="2_5pt15"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://6ocx4qo471lr" path="res://dialogues/blocker_dialogue.tres" id="17_0faqk"]
 [ext_resource type="PackedScene" uid="uid://w8yj55h561uw" path="res://prefabs/gameplay/enemy/ghoul_area_3d.tscn" id="17_2s7un"]
 [ext_resource type="Script" path="res://scripts/npc/ghoul_area.gd" id="17_toggp"]
+[ext_resource type="PackedScene" path="res://prefabs/collectables/heart.tscn" id="19_gf3ji"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_g5qlc"]
 panorama = ExtResource("2_uudm2")
@@ -41,11 +42,17 @@ volumetric_fog_density = 0.0116
 adjustment_contrast = 1.58
 adjustment_saturation = 8.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ojtgj"]
+size = Vector3(2, 1, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0g58j"]
 size = Vector3(3, 1, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ojtgj"]
-size = Vector3(2, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_mkcr5"]
+size = Vector3(5.5, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f26vl"]
+size = Vector3(3, 1, 5)
 
 [node name="MountainScene" type="Node3D"]
 script = ExtResource("1_m0ib1")
@@ -106,7 +113,7 @@ transform = Transform3D(-4.37114e-08, 3.08e-15, -1, 6.75704e-08, 1, -3.48787e-16
 transform = Transform3D(-4.37114e-08, 3.08e-15, -1, 6.75704e-08, 1, -3.48787e-16, 1, -7.84416e-08, -4.37114e-08, 12.5, 5.2, -6.5)
 
 [node name="Player" parent="." instance=ExtResource("2_5pt15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, -4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -1.5)
 fall_acceleration = 18
 
 [node name="CollisionShape3D" parent="Player" index="0"]
@@ -138,6 +145,9 @@ fov = 30.0
 near = 0.1
 far = 2000.0
 
+[node name="CollisionShape3D" parent="Player/PlayerHitBox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473431, 0)
+
 [node name="MovingBlock" parent="." instance=ExtResource("6_eblp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, -1)
 vector3 = Vector3(2, 2.08165e-12, 2.08165e-12)
@@ -158,20 +168,6 @@ player = NodePath("../../Player")
 [node name="Mountain0_99" parent="." instance=ExtResource("16_2f4we")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08165e-12, 0)
 
-[node name="GhoulArea1" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2.5, 0)
-script = ExtResource("17_toggp")
-enemy_path = NodePath("GhoulEnemy1")
-
-[node name="GhoulAreaShape1" type="CollisionShape3D" parent="GhoulArea1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.08165e-12)
-shape = SubResource("BoxShape3D_0g58j")
-
-[node name="GhoulEnemy1" parent="GhoulArea1" instance=ExtResource("9_s0van")]
-transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 2.08165e-12, -0.5, 2.08165e-12)
-max_speed = 0.6
-player_path = NodePath("../../Player")
-
 [node name="NPCBlocking" parent="." instance=ExtResource("10_d6bax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -1.5)
 
@@ -191,31 +187,63 @@ transform = Transform3D(-1.5, 5.2318e-16, -1.31134e-07, 5.2318e-16, 1.5, -5.2318
 max_speed = 0.6
 player_path = NodePath("../../Player")
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+[node name="NPCWelcome" parent="." instance=ExtResource("10_d6bax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 6.5)
 
-[node name="NPCWelcome" parent="Node3D" instance=ExtResource("10_d6bax")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -2.08165e-12, 6.5)
-
-[node name="dialogueWelcome" parent="Node3D/NPCWelcome" instance=ExtResource("12_n62pd")]
+[node name="dialogueWelcome" parent="NPCWelcome" instance=ExtResource("12_n62pd")]
 dialogue_path = ExtResource("16_voy1x")
 
-[node name="GhoulArea2" parent="Node3D" instance=ExtResource("17_2s7un")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 2, -1)
+[node name="GhoulAreas" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[node name="GhoulArea1" type="Area3D" parent="GhoulAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2.5, -2.08165e-12)
+script = ExtResource("17_toggp")
+enemy_path = NodePath("GhoulEnemy1")
+
+[node name="GhoulAreaShape1" type="CollisionShape3D" parent="GhoulAreas/GhoulArea1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_0g58j")
+
+[node name="GhoulEnemy1" parent="GhoulAreas/GhoulArea1" instance=ExtResource("9_s0van")]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 2.08165e-12, -0.5, 2.08165e-12)
+max_speed = 0.7
+player_path = NodePath("../../../Player")
+
+[node name="GhoulArea2" type="Area3D" parent="GhoulAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2.5, -2.08165e-12)
+script = ExtResource("17_toggp")
 enemy_path = NodePath("GhoulEnemy2")
 
-[node name="GhoulEnemy2" parent="Node3D/GhoulArea2" instance=ExtResource("9_s0van")]
-transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, -0.5, 0, 0)
-max_speed = 0.6
+[node name="GhoulAreaShape2-1" type="CollisionShape3D" parent="GhoulAreas/GhoulArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -1)
+shape = SubResource("BoxShape3D_0g58j")
+
+[node name="GhoulEnemy2" parent="GhoulAreas/GhoulArea2" instance=ExtResource("9_s0van")]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 9.5, -0.5, -1)
+max_speed = 0.7
 player_path = NodePath("../../../Player")
 
-[node name="GhoulArea3" parent="Node3D" instance=ExtResource("17_2s7un")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -2.08165e-12, 7)
+[node name="GhoulArea3" type="Area3D" parent="GhoulAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 2.5, 7)
+script = ExtResource("17_toggp")
 enemy_path = NodePath("GhoulEnemy3")
 
-[node name="GhoulEnemy3" parent="Node3D/GhoulArea3" instance=ExtResource("9_s0van")]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -0.5, 0, -0.5)
+[node name="GhoulAreaShape3-1" type="CollisionShape3D" parent="GhoulAreas/GhoulArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, -2, 0)
+shape = SubResource("BoxShape3D_mkcr5")
+
+[node name="GhoulAreaShape3-2" type="CollisionShape3D" parent="GhoulAreas/GhoulArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -1.5)
+shape = SubResource("BoxShape3D_f26vl")
+
+[node name="GhoulEnemy3" parent="GhoulAreas/GhoulArea3" instance=ExtResource("9_s0van")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -4, -2.5, -0.5)
+max_speed = 0.7
 player_path = NodePath("../../../Player")
+
+[node name="Heart" parent="." instance=ExtResource("19_gf3ji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 2)
 
 [connection signal="coin_collected" from="Coins/Coin1" to="HUD" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin2" to="HUD" method="_on_coin_coin_collected"]
@@ -233,9 +261,13 @@ player_path = NodePath("../../../Player")
 [connection signal="player_hit" from="Player" to="HUD" method="_on_player_player_hit"]
 [connection signal="player_hit" from="Player" to="Player" method="_on_player_hit"]
 [connection signal="body_entered" from="MovingBlock/PressurePlate" to="MovingBlock" method="move_block"]
-[connection signal="body_entered" from="GhoulArea1" to="GhoulArea1" method="_on_body_entered"]
-[connection signal="body_exited" from="GhoulArea1" to="GhoulArea1" method="_on_body_exited"]
-[connection signal="player_entered" from="GhoulArea1" to="GhoulArea1/GhoulEnemy1" method="on_player_entered"]
-[connection signal="player_exited" from="GhoulArea1" to="GhoulArea1/GhoulEnemy1" method="on_player_exited"]
+[connection signal="body_entered" from="GhoulAreas/GhoulArea1" to="GhoulAreas/GhoulArea1" method="_on_body_entered"]
+[connection signal="body_exited" from="GhoulAreas/GhoulArea1" to="GhoulAreas/GhoulArea1" method="_on_body_exited"]
+[connection signal="player_entered" from="GhoulAreas/GhoulArea1" to="GhoulAreas/GhoulArea1/GhoulEnemy1" method="on_player_entered"]
+[connection signal="player_exited" from="GhoulAreas/GhoulArea1" to="GhoulAreas/GhoulArea1/GhoulEnemy1" method="on_player_exited"]
+[connection signal="body_entered" from="GhoulAreas/GhoulArea2" to="GhoulAreas/GhoulArea2" method="_on_body_entered"]
+[connection signal="body_exited" from="GhoulAreas/GhoulArea2" to="GhoulAreas/GhoulArea2" method="_on_body_exited"]
+[connection signal="body_entered" from="GhoulAreas/GhoulArea3" to="GhoulAreas/GhoulArea3" method="_on_body_entered"]
+[connection signal="body_exited" from="GhoulAreas/GhoulArea3" to="GhoulAreas/GhoulArea3" method="_on_body_exited"]
 
 [editable path="Player"]
