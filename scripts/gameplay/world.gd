@@ -13,7 +13,7 @@ func _ready():
 	player_spawn_position = player.global_transform.origin
 	hit_screen.visible = false
 	
-func _process(double):
+func _process(double):	
 	if player.global_transform.origin.y < minimum_y_level:
 		player.hit(Vector3.ZERO)
 		player.global_transform.origin = player_spawn_position

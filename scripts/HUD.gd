@@ -6,6 +6,7 @@ var lives: int = 3  # Starting number of lives
 var score: int = 0
 
 @export var max_lives: int = 5  # Maximum number of lives the player can have'
+@export var final_boss_path : NodePath
 
 @onready var heart_container = $CanvasLayer/HeartContainer
 @onready var coin_container = $CanvasLayer/CoinContainer
@@ -14,6 +15,11 @@ var score: int = 0
 
 var allowed_pasage = false
 var allowed_moving_block = false
+var final_boss = null
+
+func _process(delta):
+	if get_node_or_null(final_boss_path) == null:
+		show_completed_screen()
 
 func update_lives_display(current_lives):
 	curr_lives = current_lives

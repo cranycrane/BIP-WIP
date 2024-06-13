@@ -75,6 +75,7 @@ shadow_enabled = true
 environment = SubResource("Environment_0etvb")
 
 [node name="HUD" parent="." instance=ExtResource("5_h2uld")]
+final_boss_path = NodePath("../GhoulAreaBoss/GhoulEnemyBoss")
 
 [node name="HitScreen" parent="." instance=ExtResource("4_qehhh")]
 
@@ -123,7 +124,7 @@ transform = Transform3D(-4.37114e-08, 3.08e-15, -1, 6.75704e-08, 1, -3.48787e-16
 transform = Transform3D(-4.37114e-08, 3.08e-15, -1, 6.75704e-08, 1, -3.48787e-16, 1, -7.84416e-08, -4.37114e-08, 12.5, 5.2, -6.5)
 
 [node name="Player" parent="." instance=ExtResource("2_5pt15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.180969, 7.20239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4.81903, -6.79761)
 fall_acceleration = 18
 
 [node name="CollisionShape3D" parent="Player" index="0"]
@@ -201,6 +202,12 @@ vector3 = Vector3(2, 2.08165e-12, 2.08165e-12)
 [node name="PressurePlate" parent="MovingBlock" instance=ExtResource("8_p6buj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
+[node name="ShootingEnemy2" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("11_oov7a")]
+transform = Transform3D(1, -3.04919e-23, -1.74846e-07, 3.04919e-23, 1, 2.64698e-23, 1.74846e-07, -2.64698e-23, 1, 0.5, 2, -3.5)
+lives = 4
+player_path = NodePath("../Player")
+animation_player = NodePath("../ShootingEnemy/Ghol/AnimationPlayer")
+
 [node name="ShootingEnemy" parent="." instance=ExtResource("11_oov7a")]
 transform = Transform3D(-1, 3.48787e-16, 8.74228e-08, 3.48787e-16, 1, -3.48787e-16, -8.74228e-08, -3.48787e-16, -1, 8, 4, -3.5)
 lives = 4
@@ -228,7 +235,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
 shape = SubResource("BoxShape3D_ojtgj")
 
 [node name="PayToPass" parent="NPCBlocking" instance=ExtResource("15_3rbed")]
-coins_to_pay = 0
+coins_to_pay = 6
 hud_path = NodePath("../../HUD")
 remove_object_path = NodePath("../BlockingCollisionShape3D")
 
@@ -237,7 +244,8 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 8.8, 6, -10.5)
 enemy_path = NodePath("GhoulEnemyBoss")
 
 [node name="GhoulEnemyBoss" parent="GhoulAreaBoss" instance=ExtResource("9_s0van")]
-transform = Transform3D(-1.5, 5.2318e-16, -1.31134e-07, 5.2318e-16, 1.5, -5.2318e-16, 1.31134e-07, -5.2318e-16, -1.5, -0.2, 0, 0)
+transform = Transform3D(-1, 3.48787e-16, -1.50996e-07, 3.48787e-16, 1, -3.48787e-16, 1.50996e-07, -3.48787e-16, -1, -0.2, 0, 0)
+lives = 5
 max_speed = 0.6
 player_path = NodePath("../../Player")
 

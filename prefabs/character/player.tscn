@@ -9,8 +9,8 @@ radius = 0.28
 height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp0uy"]
-radius = 0.505772
-height = 1.08067
+radius = 0.571033
+height = 1.14207
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

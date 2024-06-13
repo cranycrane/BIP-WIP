@@ -38,7 +38,7 @@ func _ready():
 
 func _process(delta):
 	if lives <= 0:
-		# todo play death sound
+	# todo play death sound
 		queue_free()
 		
 	if can_hit_player and hit_timer.is_stopped() and got_hit_timer.is_stopped():
